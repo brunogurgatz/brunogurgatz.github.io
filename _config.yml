@@ -11,7 +11,7 @@ locale                   : "pt-BR"
 title                    : "Bruno Gurgatz - Fotografando o Antropoceno"
 title_separator          : "-"
 name                     : "Bruno Gurgatz"
-description              : ""
+description              : "Pesquisador - Ciências Ambientais"
 url                      : https://brunogurgatz.github.io
 baseurl                  : "" # deixei em branco já que você não mencionou um subcaminho específico
 repository               : "academicpages/academicpages.github.io"
@@ -26,7 +26,7 @@ author:
   pronouns         : # example: "she/her"  
   bio              : "Poluição Atmosférica e Estuarina - Mudanças Climáticas - Conservação"
   location         : "Litoral do Paraná"
-  employer         : [LAGEAMB UFPR](https://lageamb.ufpr.br/)
+  employer         : "LAGEAMB UFPR"
   uri              : # URL
   email            : "brunogurgatz@gmail.com" 
 
