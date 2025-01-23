@@ -1,13 +1,13 @@
 ---
-title: "Paper Title Number 4"
+title: "Tracing sewage contamination in a South Atlantic UNESCO Natural Heritage estuary using sedimentary linear alkylbenzenes and their diagnostic ratios"
 collection: publications
-category: conferences
-permalink: /publication/2024-02-17-paper-title-number-4
-excerpt: 'This paper is about fixing template issue #693.'
-date: 2024-02-17
-venue: 'GitHub Journal of Bugs'
-paperurl: 'http://academicpages.github.io/files/paper3.pdf'
-citation: 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
+category: manuscripts
+permalink: http://dx.doi.org/10.1016/j.marpolbul.2024.117192
+excerpt: 'Neste artigo, apresentamos um mapeamento de Alquilbenzenos lineares (LABs) no Complexo Estuarino de Paranaguá. Esses compostos são resíduos do uso de detergentes, e portanto indicam a introdução de esgotos domésticos em um ambiente. Foi identificado que o esgoto não é a principal fonte de matéria orgânica para o estuário, e que as concentrações encontradas foram baixas em comparação com estuários mais densamente habitados. A principal fonte de esgoto está nos dois rios próximos às áreas urbanizadas do município de Paranaguá (Emboguaçu e Itiberê), que apresentaram maiores concentrações de LABs. LABs menos degradadados foram encontrados na desembocadura do rio Itiberê, refletindo a ausência de tratamento de esgoto na região, na época do estudo.'
+date: 2024
+venue: 'MARINE POLLUTION BULLETIN'
+paperurl: '[http://academicpages.github.io/files/paper3.pdf](http://dx.doi.org/10.1016/j.marpolbul.2024.117192)'
+citation: 'Gurgatz, B. M. (2024). &quot;Tracing sewage contamination in a South Atlantic UNESCO Natural Heritage estuary using sedimentary linear alkylbenzenes and their diagnostic ratios.&quot; <i>MARINE POLLUTION BULLETIN</i>.'
 ---
 
 The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
