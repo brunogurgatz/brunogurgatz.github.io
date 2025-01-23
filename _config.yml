@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "pt-BR"
-title                    : "Bruno Gurgatz"
+title                    : "Bruno Gurgatz - Fotografando o Antropoceno"
 title_separator          : "-"
 name                     : "Bruno Gurgatz"
-description              : "Fotografando o Antropoceno"
+description              : ""
 url                      : https://brunogurgatz.github.io
 baseurl                  : "" # deixei em branco já que você não mencionou um subcaminho específico
 repository               : "academicpages/academicpages.github.io"
@@ -24,9 +24,9 @@ author:
   avatar           : "profile.png"
   name             : "Bruno Gurgatz"
   pronouns         : # example: "she/her"  
-  bio              : "Pesquisador - Poluição Atmosférica - Mudanças Climáticas - Conservação"
+  bio              : "Poluição Atmosférica e Estuarina - Mudanças Climáticas - Conservação"
   location         : "Litoral do Paraná"
-  employer         : "[LAGEAMB UFPR](https://lageamb.ufpr.br/)"
+  employer         : [LAGEAMB UFPR](https://lageamb.ufpr.br/)
   uri              : # URL
   email            : "brunogurgatz@gmail.com" 
 
