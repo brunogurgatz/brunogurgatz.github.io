@@ -2,7 +2,7 @@
 title: "Assessment and source apportionment of PM2.5 in a major Latin American port: elevated concentrations from traffic in the Great Atlantic Forest Reserve"
 collection: publications
 category: manuscripts
-permalink: https://link.springer.com/article/10.1007/s11869-024-01677-1
+permalink: /publication/2024-pm25paranagua
 excerpt: 'Este trabalho realizou o primeiro monitoramento de PM2.5 em Paranaguá, em um período no qual este poluente, considerado uma das principais causas de mortalidade, ainda não estava incluso nos Padrões Nacionais de Qualidade do Ar. Os resultados apontam para altos níveis de PM2.5, com uma concentração anual média no limite do que é sugerido como seguro pela Organização Mundial da Saúde, e diversos casos de altas concentrações diárias. 
 
 - Concentração média de 15,3±7,5 µg/m³. Essa média superou as diretrizes da OMS (15 µg/m³ em seu limite mais permissivo). Além disso, os níveis de PM2.5 em Paranaguá ultrapassaram os padrões do Conselho Nacional de Meio Ambiente (CONAMA) do Brasil, tanto os intermediários (15 µg/m³) quanto os finais (10 µg/m³).
