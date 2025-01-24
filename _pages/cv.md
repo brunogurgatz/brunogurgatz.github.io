@@ -30,24 +30,9 @@ Experiência Profissional
   *Atribuições:* Monitoramento ambiental de meio físico - Qualidade do ar, água, sedimentos, efluentes, gestão de resíduos, e gestão de água de lastro.
 
 
-Publications
+Publicações
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
