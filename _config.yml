@@ -76,10 +76,10 @@ author:
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
-  books:
-    title: 'Livros/Capítulos'
   manuscripts:
     title: 'Artigos'    
+  books:
+    title: 'Livros/Capítulos'
   conferences:
     title: 'Outros'
 
