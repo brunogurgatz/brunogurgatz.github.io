@@ -9,37 +9,26 @@ redirect_from:
 
 {% include base_path %}
 
-Education
+Formação
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* **Atual: Pós-doutorado em Sistemas Costeiros e Oceânicos**, Universidade Federal do Paraná (UFPR)  
 
-Work experience
+* **Doutorado em Sistemas Costeiros e Oceânicos**, Universidade Federal do Paraná (UFPR), 2023  
+* **Mestrado em Desenvolvimento Territorial Sustentável**, Universidade Federal do Paraná (UFPR), 2018  
+* **Bacharelado em Gestão Ambiental**, Universidade Federal do Paraná (UFPR), 2015  
+* **Ensino Médio Técnico em Orientação Comunitária**, Universidade Federal do Paraná (UFPR), 2011
+ 
+
+Experiência Profissional
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* **2024 - Atual: Pesquisador**  
+  *Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR)*  
+  *Atribuições:* Gestão de projetos - AdaptaUCs  
   
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **2023 - 2024: Gestor Ambiental de Meio Físico**  
+  *Cia Ambiental / Administração dos Portos de Paranaguá e Antonina (APPA)*  
+  *Atribuições:* Monitoramento ambiental de meio físico - Qualidade do ar, água, sedimentos, efluentes, gestão de resíduos, e gestão de água de lastro.
+
 
 Publications
 ======
