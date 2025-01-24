@@ -15,7 +15,7 @@ Pesquiso também poluição atmosférica portuária. Alguns artiguinhos podem se
 
 Sou apaixonado pelo litoral paranaense, e minha produção acadêmica está voltada a compreender o impacto do capital sobre o meio ambiente através da química ambiental.
 
-Durante minha trajetória, estudei a qualidade do ar em Paranaguá (PR), rastreando a origem de poluentes atmosféricos na área portuária, e avaliei a presença de marcadores químicos em sedimentos do Complexo Estuarino de Paranaguá, associados à poluição por óleo, queimadas e efluentes. 
+Durante minha trajetória, estudei a qualidade do ar em Paranaguá (PR), rastreando a origem de poluentes atmosféricos na área portuária, e avaliei a presença de marcadores químicos em sedimentos do Complexo Estuarino de Paranaguá, associados à poluição por óleo, queimadas e efluentes. Em minha [tese](https://acervodigital.ufpr.br/xmlui/handle/1884/86567) apresento esses estudos como uma "Fotografia do Antropoceno", mostrando que o litoral do paraná ainda é um paraíso, ameaçado constantemente pelo avanço do capital interncional.
 
 
 Profissional
