@@ -16,7 +16,7 @@ excerpt: 'Este trabalho realizou o primeiro monitoramento de PM2.5 em Paranaguá
 - Os valores são referentes à 2017. Provavelmente os valores hoje podem estar superiores, visto o aumento da atividade portuária na região.'
 date: 2024-12-02
 venue: 'Air Quality Atmosphere and Health'
-paperurl: 'http://dx.doi.org/10.1016/j.marpolbul.2024.117192'
+paperurl: 'https://link.springer.com/article/10.1007/s11869-024-01677-1'
 citation: 'GURGATZ, BRUNO MARTINS; MOREIRA, CAMILA ARIELLE BUFATO ; NATALINO, LUIZA ; ALBRECHT, JULIA STEFANY CHAGAS ; GARCIA, MARINA REBACK ; JOUCOSKI, Emerson ; YAMAMOTO, CARLOS ITSUO ; MARTINS, CÉSAR DE CASTRO ; REIS, RODRIGO ARANTES ; GODOI, RICARDO HENRIQUE MORETON . Assessment and source apportionment of PM2.5 in a major Latin American port: elevated concentrations from traffic in the Great Atlantic Forest Reserve. Air Quality Atmosphere and Health, v. 1, p. 1, 2024. '
 ---
 Este trabalho realizou o primeiro monitoramento de PM2.5 em Paranaguá, em um período no qual este poluente, considerado uma das principais causas de mortalidade, ainda não estava incluso nos Padrões Nacionais de Qualidade do Ar. Os resultados apontam para altos níveis de PM2.5, com uma concentração anual média no limite do que é sugerido como seguro pela Organização Mundial da Saúde, e diversos casos de altas concentrações diárias. 
