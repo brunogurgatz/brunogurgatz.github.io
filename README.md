@@ -1,3 +1,14 @@
+minhas notas:
+publication_category:
+  books:
+    title: 'Livros/Capítulos'
+  manuscripts:
+    title: 'Artigos'    
+  conferences:
+    title: 'Outros'
+
+
+
 # Academic Pages
 **Academic Pages is a Github Pages template for academic websites.**
 
