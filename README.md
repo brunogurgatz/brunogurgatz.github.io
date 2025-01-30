@@ -1,12 +1,17 @@
-minhas notas:
-publication_category:
-  books:
-    title: 'Livros/Capítulos'
-  manuscripts:
-    title: 'Artigos'    
-  conferences:
-    title: 'Outros'
+# Categorias de Publicação
 
+Abaixo estão as categorias de publicação com seus respectivos títulos:
+
+## **publication_category**
+
+### **books**
+- **title**: 'Livros/Capítulos'
+
+### **manuscripts**
+- **title**: 'Artigos'
+
+### **conferences**
+- **title**: 'Outros'
 
 
 # Academic Pages
