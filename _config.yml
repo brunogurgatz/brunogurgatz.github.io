@@ -23,7 +23,7 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Bruno Martins Gurgatz"
-  pronouns         : # example: "she/her"  
+  pronouns         : ""  # example: "she/her" # example: "she/her"  
   bio              : "Entre geoquímica e a luta de classes"
   employer         : "LAGEAMB/ UFPR"
   location         : "Litoral do Paraná"
