@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "pt-BR"
-title                    : " "
+title                    : "Bruno Martins Gurgatz"
 title_separator          : " "
 name                     : "Bruno Gurgatz"
 description              : "Pesquisador - Ciências Ambientais"
@@ -22,7 +22,7 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Bruno Martins Gurgatz"
+  name             : ""
   pronouns         : ""  
   bio              : "Entre a geoquímica e a luta de classes"
   employer         : "LAGEAMB/ UFPR"

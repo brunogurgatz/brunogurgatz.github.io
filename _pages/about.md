@@ -16,12 +16,13 @@ Meus temas de pesquisa são:
 <li>Poluição atmosférica e áreas portuárias</li>
 <li>Geoquímica orgânica</li>
 <li>Licenciamento ambiental de grandes projetos</li>
-<li>Adaptação climática em áreas protegidas</li>  
+<li>Adaptação climática em áreas protegidas</li>
+
 
 ☭  Comunista🔻 Decrescimento</li>
 
 
-
+Formação:
 #### 🧪 Pós-doutorado em Sistemas Costeiros e Oceânicos – UFPR (atual)
 *Planos para adaptação climática para a Reserva Natural Salto Morato (PR) e Serra do Tombador (GO).*
 
