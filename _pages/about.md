@@ -14,11 +14,12 @@ Cientista ambiental. Entre geoquímica e a luta de classes.
 <span class="badge">🏞️ Conservação</span><span class="badge">🌫️ Poluição atmosférica</span></p>
 
 
-<span class="badge">☭ Marxista-leninista</span><span class="badge">🔻 decrescimento (degrowth)</span></p>
+<span class="badge">☭ Marxista-leninista</span><span class="badge">🔻 decrescimento (degrowth)</span>
 
 
 <span class="badge">🧭 Pesquisador no LAGEAMB – UFPR</span>
-<span class="badge">⚙️ Sub-coordenação: Projeto Adaptando Unidades de Conservação</span>
+
+<span class="badge">⚙️ Projeto Adaptando Unidades de Conservação</span>
 
 
 <span class="badge">🧪 Pós-doutorando em Sistemas Costeiros e Oceânicos – UFPR (atual)</span>
@@ -62,7 +63,7 @@ Durante minha trajetória, estudei a qualidade do ar em Paranaguá (PR), rastrea
 
 Profissional
 ======
-Atuei como Gestor Ambiental de Meio Físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
+Gestor Ambiental de Meio Físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
 
 Atualmente pesquisador no Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR), na sub-coordenação do projeto Adaptando Unidades de Conservação.
 
