@@ -16,8 +16,7 @@ Meus temas de pesquisa são:
 <li>Poluição atmosférica e áreas portuárias</li>
 <li>Geoquímica orgânica</li>
 <li>Licenciamento ambiental de grandes projetos</li>
-<li>Adaptação climática em áreas protegidas</li>
-
+<li>Adaptação climática em áreas protegidas</li>  
 
 
 ☭  Comunista🔻 Decrescimento
