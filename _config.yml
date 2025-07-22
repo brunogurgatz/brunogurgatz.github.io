@@ -8,8 +8,8 @@
 
 # Basic Site Settings
 locale                   : "pt-BR"
-title                    : "Bruno Gurgatz"
-title_separator          : "-"
+title                    : " "
+title_separator          : " "
 name                     : "Bruno Gurgatz"
 description              : "Pesquisador - Ciências Ambientais"
 url                      : https://brunogurgatz.github.io
@@ -25,7 +25,7 @@ author:
   name             : "Bruno Martins Gurgatz"
   pronouns         : # example: "she/her"  
   bio              : "Entre geoquímica e a luta de classes"
-employer         : "LAGEAMB/ UFPR"
+  employer         : "LAGEAMB/ UFPR"
   location         : "Litoral do Paraná"
    uri              : # URL
   email            : "brunogurgatz@gmail.com" 
