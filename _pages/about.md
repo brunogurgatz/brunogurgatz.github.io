@@ -11,23 +11,11 @@ redirect_from:
 
 Pesquisador do [Laboratório de Geoprocessamento e Estudos Ambientais da UFPR](https://lageamb.ufpr.br/elementor-14562/), coordena o projeto **Adaptando Unidades de Conservação**.
 
-Meus temas de pesquisa são **poluição do ar em áreas portuárias**, **licenciamento ambiental** e **adaptação climática em áreas protegidas**.
+Meus temas de pesquisa são **poluição atmosférica em áreas portuárias**, **licenciamento ambiental de grandes projetos** e **adaptação climática em áreas protegidas**.
 
+<li>☭ Comunista</li>
+  <li>🔻 Decrescimento</li>
 
-<span class="badge">📍 Litoral do Paraná</span> <span class="badge">🌲 Floresta Atlântica</span>
-
-
-<span class="badge">🏞️ Conservação</span><span class="badge"> ☄️ Geoquímica e mudanças climáticas</span>
-
-
-<span class="badge">🌫️ Poluição atmosférica</span><span class="badge">🔥 Licenciamento ambiental</span>
-
-
-___
-<span class="badge">☭ Marxista-leninista</span><span class="badge">🔻Decrescimento </span>
-
-___
-<span class="badge">🧭 LAGEAMB – UFPR</span> <span class="badge">⚙️ Projeto Adaptando Unidades de Conservação</span>
 
 ___
 <span class="badge">🧪 Pós-doutorando em Sistemas Costeiros e Oceânicos – UFPR (atual)</span>
