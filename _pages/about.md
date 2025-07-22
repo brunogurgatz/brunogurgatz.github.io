@@ -12,7 +12,7 @@ redirect_from:
 Pesquisador do Laboratório de Geoprocessamento e Estudos Ambientais da UFPR, sub-coordenador do projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/).
 
 Meus temas de pesquisa são:
-<li>Poluição atmosférica em áreas portuárias</li>
+<li>Poluição atmosférica e áreas portuárias</li>
 <li>Geoquímica orgânica</li>
 <li>Licenciamento ambiental de grandes projetos</li>
 <li>Adaptação climática em áreas protegidas</li>
