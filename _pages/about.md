@@ -13,8 +13,7 @@ Pesquisador do [Laboratório de Geoprocessamento e Estudos Ambientais da UFPR](h
 
 Meus temas de pesquisa são **poluição atmosférica em áreas portuárias**, **licenciamento ambiental de grandes projetos** e **adaptação climática em áreas protegidas**.
 
-<li>☭ Comunista</li>
-  <li>🔻 Decrescimento</li>
+<li>☭  Comunista🔻 Decrescimento</li>
 
 
 ___
@@ -30,11 +29,30 @@ ___
 
 
 
+#### 🧪 Pós-doutorado em Sistemas Costeiros e Oceânicos – UFPR (atual)
+*Planos para adaptação climática para a Reserva Natural Salto Morato (PR) e Serra do Tombador (GO).*
 
-Durante minha trajetória, estudei a qualidade do ar em Paranaguá (PR), rastreando a origem de poluentes atmosféricos na área portuária, e avaliei a presença de marcadores químicos em sedimentos do Complexo Estuarino de Paranaguá, associados à poluição por óleo, queimadas e efluentes. 
+---
 
-**Em minha [tese](https://acervodigital.ufpr.br/xmlui/handle/1884/86567) apresento esses estudos como uma "Fotografia do Antropoceno", mostrando através da geoquímica orgânica, que o litoral do Paraná ainda é um paraíso, mas já sente o peso de sustentar o avanço do capital internacional e do agronegócio predatório.**
-{: .notice}
+#### 🎓 Doutorado em Sistemas Costeiros e Oceânicos – UFPR (2023)
+*Avanços na compreensão sobre a origem, destino e distribuição de poluentes antropogênicos no Complexo Estuarino de Paranaguá, Brasil — uma fotografia do Antropoceno.*
+
+---
+
+#### 📚 Mestrado em Desenvolvimento Territorial Sustentável – UFPR (2018)
+*Avaliação de material particulado fino, fuligem e poluentes gasosos na região portuária de Paranaguá.*
+
+---
+
+#### 🌱 Graduação em Gestão Ambiental – UFPR (2015)
+*Poluição atmosférica e vulnerabilização social: proposta metodológica para análise de risco ambiental utilizando lógica fuzzy.*
+
+---
+
+#### 📌 Ensino Técnico em Orientação Comunitária – UFPR (2011)
+
+
+
 
 
 ---
