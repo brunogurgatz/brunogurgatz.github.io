@@ -7,8 +7,12 @@ redirect_from:
   - /about.html
 ---
 
+<img src="/images/headersatelite.jpg" alt="Imagem de satélite" style="width:100%; border-radius: 6px; margin-bottom: 20px;">
 
-Entre geoquímica e a luta de classes.
+Pesquisador do [Laboratório de Geoprocessamento e Estudos Ambientais da UFPR](https://lageamb.ufpr.br/elementor-14562/), coordena o projeto **Adaptando Unidades de Conservação**.
+
+Meus temas de pesquisa são **poluição do ar em áreas portuárias**, **licenciamento ambiental** e **adaptação climática em áreas protegidas**.
+
 
 <span class="badge">📍 Litoral do Paraná</span> <span class="badge">🌲 Floresta Atlântica</span>
 
