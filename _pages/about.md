@@ -12,7 +12,9 @@ Cientista ambiental. Entre geoquímica e a luta de classes.
 
 <span class="badge">📍 Litoral do Paraná</span> <span class="badge">🌲 Floresta Atlântica</span>
 
-<span class="badge">🏞️ Conservação</span><span class="badge">☄️ Geoquímica</span>
+
+<span class="badge">🏞️ Conservação</span><span class="badge"> ☄️ Geoquímica e mudanças climáticas</span>
+
 
 <span class="badge">🌫️ Poluição atmosférica</span><span class="badge">🔥 Licenciamento ambiental</span>
 
