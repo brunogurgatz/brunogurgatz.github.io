@@ -19,7 +19,8 @@ Meus temas de pesquisa são:
 <li>Adaptação climática em áreas protegidas</li>
 
 
-☭  Comunista🔻 Decrescimento</li>
+
+☭  Comunista🔻 Decrescimento
 
 
 Formação:
