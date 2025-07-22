@@ -9,7 +9,8 @@ redirect_from:
 
 <img src="/images/headersatelite.jpg" alt="Imagem de satélite" style="width:100%; border-radius: 6px; margin-bottom: 20px;">
 
-Pesquisador do Laboratório de Geoprocessamento e Estudos Ambientais da UFPR, sub-coordenador do projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/).
+Pesquisador do Laboratório de Geoprocessamento e Estudos Ambientais da UFPR. 
+Sub-coordenador do projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/).
 
 Meus temas de pesquisa são:
 <li>Poluição atmosférica e áreas portuárias</li>
