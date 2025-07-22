@@ -7,9 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-Olá! Sou Bruno Martins Gurgatz, pós-doutorando em Sistemas Costeiros e Oceânicos da UFPR e pesquisador no LAGEAMB UFPR. 
+Olá! Sou Bruno Martins Gurgatz, pós-doutorando em Sistemas Costeiros e Oceânicos da UFPR e pesquisador no LAGEAMB/UFPR. 
 
-Atualmente trabalho na sub-coordenação do projeto [AdaptaUCs](https://lageamb.ufpr.br/projeto-adaptaucs/) com adaptação às mudanças climáticas e conservação.
+Atualmente trabalho na sub-coordenação do projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/) com adaptação às mudanças climáticas e conservação.
 
 Pesquiso também poluição atmosférica portuária. Alguns artiguinhos podem ser encontrados ali nas [publicações](/publications).
 
@@ -25,7 +25,7 @@ Profissional
 ======
 Atuei como Gestor Ambiental de Meio Físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
 
-Atualmente, sou pesquisador no Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR), onde gerencio o projeto AdaptaUCs.
+Atualmente, sou pesquisador no Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR), onde gerencio o projeto Adaptando Unidades de Conservação.
 
 E esse site?
 ======
