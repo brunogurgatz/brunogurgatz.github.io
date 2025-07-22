@@ -11,18 +11,19 @@ redirect_from:
 Cientista ambiental. Entre geoquímica e a luta de classes.
 
 <span class="badge">📍 Litoral do Paraná</span> <span class="badge">🌲 Floresta Atlântica</span>
+
 <span class="badge">🏞️ Conservação</span><span class="badge">☄️ Geoquímica</span>
+
 <span class="badge">🌫️ Poluição atmosférica</span><span class="badge">🔥 Licenciamento ambiental</span>
 
 
-
-
+___
 <span class="badge">☭ Marxista-leninista</span><span class="badge">🔻Decrescimento </span>
 
-
+___
 <span class="badge">🧭 LAGEAMB – UFPR</span> <span class="badge">⚙️ Projeto Adaptando Unidades de Conservação</span>
 
-
+___
 <span class="badge">🧪 Pós-doutorando em Sistemas Costeiros e Oceânicos – UFPR (atual)</span>
 
 <span class="badge">🎓 Doutorado em Sistemas Costeiros e Oceânicos – UFPR (2023)</span>
