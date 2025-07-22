@@ -11,22 +11,26 @@ redirect_from:
 Cientista ambiental. Entre geoquímica e a luta de classes.
 
 <span class="badge">📍 Litoral do Paraná</span> <span class="badge">🌲 Floresta Atlântica</span>
-<span class="badge">🏞️ Conservação</span><span class="badge">🌫️ Poluição atmosférica</span>
+<span class="badge">🏞️ Conservação</span><span class="badge">☄️ Geoquímica</span>
+<span class="badge">🌫️ Poluição atmosférica</span><span class="badge">🔥 Licenciamento ambiental</span>
 
 
-<span class="badge">☭ Marxista-leninista</span><span class="badge">🔻decrescimento </span>
 
 
-<span class="badge">🧭 Pesquisador no LAGEAMB – UFPR</span>
+<span class="badge">☭ Marxista-leninista</span><span class="badge">🔻Decrescimento </span>
 
-<span class="badge">⚙️ Projeto Adaptando Unidades de Conservação</span>
+
+<span class="badge">🧭 LAGEAMB – UFPR</span> <span class="badge">⚙️ Projeto Adaptando Unidades de Conservação</span>
 
 
 <span class="badge">🧪 Pós-doutorando em Sistemas Costeiros e Oceânicos – UFPR (atual)</span>
 
 <span class="badge">🎓 Doutorado em Sistemas Costeiros e Oceânicos – UFPR (2023)</span>
+
 <span class="badge">📚 Mestrado em Desenvolvimento Territorial Sustentável – UFPR (2018)</span>
+
 <span class="badge">🌱 Graduação em Gestão Ambiental – UFPR (2015)</span>
+
 <span class="badge">📌 Ensino Técnico em Orientação Comunitária – UFPR (2011)</span>
 
 
@@ -56,11 +60,3 @@ Durante minha trajetória, estudei a qualidade do ar em Paranaguá (PR), rastrea
 <p><a href="{{ '/publications/' | relative_url }}">→ Ver todas as publicações</a></p>
 
 ---
-
-
-Profissional
-======
-Gestor Ambiental de Meio Físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
-
-Atualmente pesquisador no Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR), na sub-coordenação do projeto Adaptando Unidades de Conservação.
-
