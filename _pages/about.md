@@ -4,7 +4,7 @@ title: "Bruno Martins Gurgatz"
 author_profile: true
 redirect_from: 
   - /about/
-  - /about.html
+  - /about.html 
 ---
 
 <img src="/images/headersatelite.jpg" alt="Imagem de satélite" style="width:100%; border-radius: 6px; margin-bottom: 20px;">
