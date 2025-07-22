@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-Cientista ambiental. Entre geoquímica e a luta de classes.
+Entre geoquímica e a luta de classes.
 
 <span class="badge">📍 Litoral do Paraná</span> <span class="badge">🌲 Floresta Atlântica</span>
 
