@@ -1,32 +1,60 @@
 ---
 permalink: /
-title: "Sobre"
+title: "Bruno Martins Gurgatz"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Olá! Sou Bruno Martins Gurgatz, pós-doutorando em Sistemas Costeiros e Oceânicos da UFPR e pesquisador no LAGEAMB/UFPR. 
 
-Atualmente trabalho na sub-coordenação do projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/) com adaptação às mudanças climáticas e conservação.
+Cientista ambiental. Entre geoquímica e a luta de classes.
 
-Pesquiso também poluição atmosférica portuária. Alguns artiguinhos podem ser encontrados ali nas [publicações](/publications).
+<span class="badge">📍 Litoral do Paraná</span>
+<span class="badge">🌲 Floresta Atlântica</span>
+<span class="badge">☭ Marxista-leninista</span>
+<span class="badge">🔻 decrescimento (degrowth)</span>
 
-Sou apaixonado pelo litoral paranaense, e minha produção acadêmica está voltada a compreender o impacto do capital sobre o meio ambiente através da química ambiental.
+<span class="badge">🧪 Pós-doutorando em Sistemas Costeiros e Oceânicos – UFPR (atual)</span>
+<span class="badge">🎓 Doutorado em Sistemas Costeiros e Oceânicos – UFPR (2023)</span>
+<span class="badge">📚 Mestrado em Desenvolvimento Territorial Sustentável – UFPR (2018)</span>
+<span class="badge">🌱 Graduação em Gestão Ambiental – UFPR (2015)</span>
+<span class="badge">📌 Ensino Técnico em Orientação Comunitária – UFPR (2011)</span>
+<span class="badge">🧭 Pesquisador no LAGEAMB – UFPR</span>
+<span class="badge">⚙️ Sub-coordenação: Projeto Adaptando Unidades de Conservação</span>
+<span class="badge">🏭 Experiência com portos, poluição atmosférica, química orgânica e sedimentos estuarinos</span>
+
+
 
 Durante minha trajetória, estudei a qualidade do ar em Paranaguá (PR), rastreando a origem de poluentes atmosféricos na área portuária, e avaliei a presença de marcadores químicos em sedimentos do Complexo Estuarino de Paranaguá, associados à poluição por óleo, queimadas e efluentes. 
 
-**Em minha [tese](https://acervodigital.ufpr.br/xmlui/handle/1884/86567) apresento esses estudos como uma "Fotografia do Antropoceno", mostrando que o litoral do Paraná ainda é um paraíso, mas já sente o peso de sustentar o avanço do capital internacional e do agronegócio predatório.**
+**Em minha [tese](https://acervodigital.ufpr.br/xmlui/handle/1884/86567) apresento esses estudos como uma "Fotografia do Antropoceno", mostrando através da geoquímica orgânica, que o litoral do Paraná ainda é um paraíso, mas já sente o peso de sustentar o avanço do capital internacional e do agronegócio predatório.**
 {: .notice}
+
+
+---
+
+### Publicações recentes
+
+{% assign recent_pubs = site.publications | sort: 'date' | reverse | slice: 0, 5 %}
+<ul>
+  {% for pub in recent_pubs %}
+    <li>
+      <strong>{{ pub.title }}</strong><br>
+      <em>{{ pub.authors }}</em><br>
+      <a href="{{ pub.url | relative_url }}">[acessar]</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<p><a href="{{ '/publications/' | relative_url }}">→ Ver todas as publicações</a></p>
+
+---
 
 
 Profissional
 ======
 Atuei como Gestor Ambiental de Meio Físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
 
-Atualmente, sou pesquisador no Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR), onde gerencio o projeto Adaptando Unidades de Conservação.
+Atualmente pesquisador no Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR), na sub-coordenação do projeto Adaptando Unidades de Conservação.
 
-E esse site?
-======
-Criei esse site só para ter um espaço para registrar minhas publicações, projetos que me envolvo e ideias diversas. Não liga a bagunça...
