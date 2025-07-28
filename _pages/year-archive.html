@@ -11,6 +11,19 @@ redirect_from:
 <style>
   .list__item {
     margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+
+  .list__item:not(:last-child)::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #ccc;
+    user-select: none;
   }
 </style>
 
