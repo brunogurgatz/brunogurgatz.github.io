@@ -8,13 +8,13 @@ tags:
 excerpt: "Delícia"
 
 
-excerpt: '<img src="/assets/images/dose.jpg" alt="doomscroll"><br>Não fale comigo até eu consumir minha dose diária de propaganda algorítmica'
+excerpt: '<img src="/assets/images/algoritmo-matinal.jpg" alt="doomscroll"><br>Não fale comigo até eu consumir minha dose diária de propaganda algorítmica'
 
 ---
 
 
 
-![Meme](/assets/images/dose.jpg)
+![Meme](/assets/images/algoritmo-matinal.jpg)
 
 
 ![Não fale comigo até eu consumir minha dose diária de propaganda algorítmica.](/assets/images/algoritmo-matinal.jpg)
