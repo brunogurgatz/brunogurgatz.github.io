@@ -6,6 +6,9 @@ tags:
   - textos
   - anarquia
   - minhas bases
+
+excerpt: "David Graeber analisa como empregos sem propósito real se tornaram parte essencial da reprodução do sistema econômico atual."
+
 ---
 
 ![Capa do texto de David Graeber](/assets/images/bullshitjobs.jpg)
