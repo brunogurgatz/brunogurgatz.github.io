@@ -7,10 +7,10 @@ tags:
   - anarquia
   - minhas bases
 
-excerpt: "David Graeber analisa como empregos sem propósito real se tornaram parte essencial da reprodução do sistema econômico atual."
-![Capa do texto de David Graeber](/assets/images/bullshitjobs.jpg)
-
+excerpt: '<img src="/assets/images/bullshitjobs.jpg" alt="Capa Graeber"><br>David Graeber analisa como empregos sem propósito real se tornaram parte essencial da reprodução do sistema econômico atual.'
 ---
+
+
 Gosto muito deste texto. Graeber exemplifica bem o fenômeno pelo qual diversos trabalhos inúteis são criados em um ciclo para reprodução do modo de produção atual.
 
 
