@@ -5,42 +5,17 @@ title: "Pra não se perder..."
 author_profile: true
 redirect_from:
   - /wordpress/blog-posts/
-entries_layout: list
+
 
 ---
+
 {% include base_path %}
-{% capture written_year %}None{% endcapture %}
-
-<div class="archive-container">
-
-  {% for post in site.posts %}
-    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-
-    {% if year != written_year %}
-      {% if forloop.index != 1 %}
-        </ul>
-      {% endif %}
-      <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
-      <ul class="archive-posts-list">
-      {% capture written_year %}{{ year }}{% endcapture %}
-    {% endif %}
-
-    <li class="archive-post-item">
-      <article>
-        <h3 class="post-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h3>
-        <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date: "%d %b %Y" }}</time>
-        <p class="post-excerpt">
-          {{ post.excerpt | strip_html | truncatewords: 30 }}
-        </p>
-        <a href="{{ post.url | relative_url }}" class="read-more">Leia mais &raquo;</a>
-      </article>
-    </li>
-
-    {% if forloop.last %}
-      </ul>
-    {% endif %}
-  {% endfor %}
-
-</div>
+{% capture written_year %}'None'{% endcapture %}
+{% for post in site.posts %}
+  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+  {% if year != written_year %}
+    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
+    {% capture written_year %}{{ year }}{% endcapture %}
+  {% endif %}
+  {% include archive-single.html %}
+{% endfor %}
