@@ -6,6 +6,10 @@ tags:
   - memes
   
 excerpt: "Delícia"
+
+
+excerpt: '<img src="/assets/images/dose.jpg" alt="doomscroll"><br>Não fale comigo até eu consumir minha dose diária de propaganda algorítmica'
+
 ---
 
 

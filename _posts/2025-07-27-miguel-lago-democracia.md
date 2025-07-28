@@ -7,7 +7,10 @@ tags:
   - política
   - podcast
   - minhas bases
-excerpt: "Democracia vai além das urnas — sobre limites do voto e alternativas de decisão coletiva"
+
+excerpt: "📊 Democracia vai além das urnas — sobre os limites do voto e alternativas reais de decisão coletiva. 📺 [Ouça no YouTube](https://www.youtube.com/watch?v=wBZGMZEghMs)"
+
+
 ---
 
 🎙️ **Podcast | Fio da Meada – Rádio Novelo**  
