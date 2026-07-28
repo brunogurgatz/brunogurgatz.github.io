@@ -21,13 +21,17 @@ Formação
 
 Experiência Profissional
 ======
-* **2024 - Atual: Pesquisador**  
-  *Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR)*  
-  *Atribuições:* Gestão de projetos - AdaptaUCs  
-  
+* **2026 - Atual: Pesquisador**  
+   *[Laboratório Móvel de Educação Científica da UFPR Litoral](https://labmovel.ufpr.br/)*  
+   *Atribuições:* Divulgação científica e cultura oceânica - [@napi_agenda2030](https://www.instagram.com/napi_agenda2030/)
+
+* **2024 - 2026: Gestor de projetos**  
+   *[Laboratório de Geoprocessamento e Estudos Ambientais (LAGEAMB-UFPR)](https://lageamb.ufpr.br/)*  
+   *Atribuições:* Gestão de projetos - Adaptando Unidades de Conservação
+
 * **2023 - 2024: Gestor Ambiental de Meio Físico**  
-  *Cia Ambiental / Administração dos Portos de Paranaguá e Antonina (APPA)*  
-  *Atribuições:* Monitoramento ambiental de meio físico - Qualidade do ar, água, sedimentos, efluentes, gestão de resíduos, e gestão de água de lastro.
+   *Cia Ambiental / Administração dos Portos de Paranaguá e Antonina (APPA)*  
+   *Atribuições:* Monitoramento ambiental de meio físico - Qualidade do ar, água, sedimentos, efluentes, gestão de resíduos, e gestão de água de lastro.
 
 
 Publicações
