@@ -25,7 +25,8 @@ author:
   name             : ""
   pronouns         : ""  
   bio              : "Entre a geoquímica e a luta de classes"
-  employer         : "[LABMOVEL/UFPR](https://labmovel.ufpr.br/)"
+  employer         : "LABMOVEL/UFPR"
+  employer_url     : "https://labmovel.ufpr.br/"
   location         : "Litoral do Paraná"
   uri              : ""# URL
   email            : "brunogurgatz@gmail.com" 
