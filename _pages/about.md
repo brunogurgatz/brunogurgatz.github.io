@@ -9,8 +9,13 @@ redirect_from:
 
 <img src="/images/headersatelite.jpg" alt="Imagem de satélite" style="width:100%; border-radius: 6px; margin-bottom: 20px;">
 
-Pesquisador do Laboratório de Geoprocessamento e Estudos Ambientais da UFPR.  
-Sub-coordenador do projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/).
+Pesquisador do Laboratório Móvel de Educação Científica da UFPR Litoral.  
+Desenvolvo projetos de divulgação científica e cultura oceânica no projeto <a href="https://www.instagram.com/napi_agenda2030/">@napi_agenda2030</a>.
+
+Desenvolvi o projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/), no Laboratório de Geoprocessamento e Estudos Ambientais da UFPR (LAGEAMB UFPR), atuando no desenvolvimento dos planos de Adaptação à Mudança do Clima das Reservas Naturais da Fundação Grupo Boticário de Proteção à Natureza.
+
+Fui gestor de meio físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
+
 
 Meus temas de pesquisa são:
 <li>Poluição atmosférica e áreas portuárias</li>
@@ -44,7 +49,6 @@ Formação:
 ---
 
 #### 📌 Ensino Técnico em Orientação Comunitária – UFPR (2011)
-
 
 
 
