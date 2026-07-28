@@ -15,16 +15,12 @@ Pesquisador das ciências ambientais. Gosto de mar, de floresta, de ciência e d
 - Laboratório Móvel de Educação Científica da UFPR Litoral
 - Divulgação científica e cultura oceânica no projeto [@napi_agenda2030](https://www.instagram.com/napi_agenda2030/)
 
-### Acho que manjo:
-- Mudança do clima e conservação
-- Poluição e qualidade ambiental em áreas portuárias
-- Monitoramento ambiental e licenciamento
-- Divulgação Científica e Ciência Cidadã
-
-### Pesquisa
-- Poluição atmosférica em Paranaguá
-- Adaptação climática em áreas protegidas
-- Geoquímica e poluição estuarina
+### Já fiz de tudo nessa vida:
+- Planos de adaptação à mudança do clima para as Reservas da Fundação Boticário;
+- Monitoramento ambiental no Porto de Paranaguá;
+- Estudei poluição do ar e de sedimentos no Complexo Estuarino de Paranaguá;
+- Fiz projetos de divulgação científica;
+- E nas horas vagas uns projetinhos de eletrônica, jardinagem, pedal...
 
 ---
 
