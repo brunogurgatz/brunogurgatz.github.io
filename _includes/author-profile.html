@@ -155,6 +155,11 @@
       {% endif %}
       {% if author.zhihu %}
       <li><a href="https://www.zhihu.com/people/{{ author.zhihu }}"><i class="fab fa-fw fa-zhihu icon-pad-right" aria-hidden="true"></i>Zhihu</a></li>
+      {% endif %}
+      
+      <!-- Easter Egg: Psychedelia -->
+      {% if author.psychedelia %}
+      <li><a href="{{ author.psychedelia }}">🪁 Psychedelia</a></li>
       {% endif %}      
     </ul>
   </div>
