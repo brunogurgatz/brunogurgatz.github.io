@@ -25,7 +25,7 @@ author:
   name             : ""
   pronouns         : ""  
   bio              : "Entre a geoquímica e a luta de classes"
-  employer         : "LAGEAMB/ UFPR"
+  employer         : "[LABMOVEL/UFPR](https://labmovel.ufpr.br/)"
   location         : "Litoral do Paraná"
   uri              : ""# URL
   email            : "brunogurgatz@gmail.com" 
@@ -73,6 +73,7 @@ author:
   xing             : # Username
   youtube          : # Username
   zhihu            : # Username
+  psychedelia      : "https://www.youtube.com/watch?v=d33C8IE7WnQ"
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
