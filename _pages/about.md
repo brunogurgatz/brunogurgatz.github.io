@@ -9,49 +9,30 @@ redirect_from:
 
 <img src="/images/headersatelite.jpg" alt="Imagem de satélite" style="width:100%; border-radius: 6px; margin-bottom: 20px;">
 
-Pesquisador do Laboratório Móvel de Educação Científica da UFPR Litoral.  
-Desenvolvo projetos de divulgação científica e cultura oceânica no projeto <a href="https://www.instagram.com/napi_agenda2030/">@napi_agenda2030</a>.
+Pesquisador das ciências ambientais. Gosto de mar, de floresta, de ciência e de justiça social.
 
-Desenvolvi o projeto [Adaptando Unidades de Conservação](https://lageamb.ufpr.br/elementor-14562/), no Laboratório de Geoprocessamento e Estudos Ambientais da UFPR (LAGEAMB UFPR), atuando no desenvolvimento dos planos de Adaptação à Mudança do Clima das Reservas Naturais da Fundação Grupo Boticário de Proteção à Natureza.
+### Atualmente
+- Laboratório Móvel de Educação Científica da UFPR Litoral
+- Divulgação científica e cultura oceânica no projeto [@napi_agenda2030](https://www.instagram.com/napi_agenda2030/)
 
-Fui gestor de meio físico no monitoramento ambiental dos portos de Paranaguá e Antonina.
+### Acho que manjo:
+- Mudança do clima e conservação
+- Poluição e qualidade ambiental em áreas portuárias
+- Monitoramento ambiental e licenciamento
+- Divulgação Científica e Ciência Cidadã
 
-
-Meus temas de pesquisa são:
-<li>Poluição atmosférica e áreas portuárias</li>
-<li>Geoquímica orgânica</li>
-<li>Licenciamento ambiental de grandes projetos</li>
-<li>Adaptação climática em áreas protegidas</li>  
-
-
-☭  Comunista🔻 Decrescimento
-
-
-Formação:
-#### 🧪 Pós-doutorado em Sistemas Costeiros e Oceânicos – UFPR (atual)
-*Planos para adaptação climática para a Reserva Natural Salto Morato (PR) e Serra do Tombador (GO).*
+### Pesquisa
+- Poluição atmosférica em Paranaguá
+- Adaptação climática em áreas protegidas
+- Geoquímica e poluição estuarina
 
 ---
 
-#### 🎓 Doutorado em Sistemas Costeiros e Oceânicos – UFPR (2023)
-*Avanços na compreensão sobre a origem, destino e distribuição de poluentes antropogênicos no Complexo Estuarino de Paranaguá, Brasil — uma fotografia do Antropoceno.*
+> "Anarquistas são simplesmente pessoas que acreditam que seres humanos são capazes de se comportar de maneira razoável sem ter de ser forçados a isso. É realmente uma noção bem simples, mas é algo que os ricos e poderosos sempre consideraram extremamente perigoso."
+>
+> — [David Graeber](https://pt.anarchistlibraries.net/library/david-graeber-voce-e-anarquista) em *Você é Anarquista?*
 
----
-
-#### 📚 Mestrado em Desenvolvimento Territorial Sustentável – UFPR (2018)
-*Avaliação de material particulado fino, fuligem e poluentes gasosos na região portuária de Paranaguá.*
-
----
-
-#### 🌱 Graduação em Gestão Ambiental – UFPR (2015)
-*Poluição atmosférica e vulnerabilização social: proposta metodológica para análise de risco ambiental utilizando lógica fuzzy.*
-
----
-
-#### 📌 Ensino Técnico em Orientação Comunitária – UFPR (2011)
-
-
-
+☭ Comunista 🔻 Decrescimento
 
 ---
 
