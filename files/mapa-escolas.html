@@ -290,6 +290,7 @@
     let refreshTimer = null;
     let initialFitDone = false;
     let lastUpdatedAt = null;
+    let invalidRowCount = 0;
 
     async function loadSchools({ manual = false } = {}) {
       setStatus(manual ? 'Atualizando dados…' : 'Carregando escolas…');
@@ -324,17 +325,23 @@
         allSchools = parsed.data
           .map((row, index) => normalizeSchool(row, index))
           .filter((school) => {
-            const valid = school.escola && Number.isFinite(school.latitude) && Number.isFinite(school.longitude);
-            if (!valid) rejectedRows.push(school.sourceRow);
-            return valid;
+            const validation = validateSchool(school);
+            if (!validation.valid) {
+              rejectedRows.push({
+                linha: school.sourceRow,
+                motivo: validation.reason,
+              });
+            }
+            return validation.valid;
           });
 
+        invalidRowCount = rejectedRows.length;
         lastUpdatedAt = new Date();
         populateTypeFilter();
         renderFilteredSchools();
 
         if (rejectedRows.length) {
-          console.warn('Linhas ignoradas por falta de escola ou coordenadas válidas:', rejectedRows);
+          console.warn('Linhas inválidas ignoradas:', rejectedRows);
         }
       } catch (error) {
         console.error(error);
@@ -371,8 +378,52 @@
       return '';
     }
 
+    function validateSchool(school) {
+      if (!school.escola || school.escola.length < 3) {
+        return { valid: false, reason: 'nome da escola ausente ou incompleto' };
+      }
+
+      if (isSpreadsheetError(school.escola)) {
+        return { valid: false, reason: 'nome da escola contém erro de planilha' };
+      }
+
+      if (!Number.isFinite(school.latitude) || !Number.isFinite(school.longitude)) {
+        return { valid: false, reason: 'latitude ou longitude ausente/inválida' };
+      }
+
+      if (school.latitude < -90 || school.latitude > 90) {
+        return { valid: false, reason: 'latitude fora do intervalo permitido' };
+      }
+
+      if (school.longitude < -180 || school.longitude > 180) {
+        return { valid: false, reason: 'longitude fora do intervalo permitido' };
+      }
+
+      if (school.latitude === 0 && school.longitude === 0) {
+        return { valid: false, reason: 'coordenadas 0,0 indicam registro não preenchido' };
+      }
+
+      return { valid: true, reason: '' };
+    }
+
     function parseCoordinate(value) {
-      return Number(cleanText(value).replace(',', '.'));
+      const cleaned = cleanText(value);
+
+      // Number('') resulta em 0 no JavaScript. Por isso, campos vazios precisam
+      // ser interrompidos antes da conversão, para não criarem pontos em 0,0.
+      if (!cleaned || isSpreadsheetError(cleaned)) return Number.NaN;
+
+      const normalized = cleaned
+        .replace(/\s/g, '')
+        .replace(',', '.');
+      const coordinate = Number(normalized);
+
+      return Number.isFinite(coordinate) ? coordinate : Number.NaN;
+    }
+
+    function isSpreadsheetError(value) {
+      // Abrange #REF!, #N/A, #VALUE!, #DIV/0! e outros erros do Google Sheets.
+      return cleanText(value).startsWith('#');
     }
 
     function cleanText(value) {
@@ -428,7 +479,10 @@
       const updated = lastUpdatedAt
         ? ` Última leitura: ${new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(lastUpdatedAt)}.`
         : '';
-      setStatus(`${filtered.length} de ${allSchools.length} escolas visíveis.${updated}`);
+      const ignored = invalidRowCount
+        ? ` ${invalidRowCount} registro${invalidRowCount === 1 ? '' : 's'} inválido${invalidRowCount === 1 ? '' : 's'} ignorado${invalidRowCount === 1 ? '' : 's'}.`
+        : '';
+      setStatus(`${filtered.length} de ${allSchools.length} escolas visíveis.${ignored}${updated}`);
 
       if ((fit || !initialFitDone) && currentMarkers.length) {
         const bounds = L.featureGroup(currentMarkers).getBounds();
