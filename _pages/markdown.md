@@ -1,8 +1,9 @@
 ---
-permalink: /markdown/
+permalink: /projetos/
 title: "Projetos"
 author_profile: true
 redirect_from: 
+  - /markdown/
   - /md/
   - /markdown.html
 ---
