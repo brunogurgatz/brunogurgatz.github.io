@@ -112,16 +112,18 @@
       align-items: center;
     }
 
-    .legend-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.24);
+    .school-marker.legend-marker {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border-width: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
     }
 
-    .legend-dot.normal { background: var(--normal); }
-    .legend-dot.maker { background: var(--maker); }
+    .school-marker.legend-marker::after {
+      width: 5px;
+      height: 5px;
+    }
 
     #map {
       width: 100%;
@@ -174,6 +176,26 @@
       font-weight: 700;
     }
 
+    /* Em telas de computador, o mapa ocupa exatamente a altura disponível.
+       Isso elimina a barra de rolagem interna sem alterar o comportamento mobile. */
+    @media (min-width: 761px) and (pointer: fine) {
+      html, body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .map-app {
+        height: 100%;
+        grid-template-rows: auto auto minmax(0, 1fr);
+        overflow: hidden;
+      }
+
+      #map {
+        height: 100%;
+        min-height: 0;
+      }
+    }
+
     @media (max-width: 760px) {
       .toolbar { grid-template-columns: 1fr 1fr; }
       #map { height: 560px; }
@@ -208,11 +230,11 @@
       <span id="status">Carregando escolas…</span>
       <span class="legend" aria-label="Legenda">
         <span class="legend-item">
-          <span class="legend-dot normal" aria-hidden="true"></span>
+          <span class="school-marker legend-marker normal" aria-hidden="true"></span>
           Clube normal
         </span>
         <span class="legend-item">
-          <span class="legend-dot maker" aria-hidden="true"></span>
+          <span class="school-marker legend-marker maker" aria-hidden="true"></span>
           Clube maker
         </span>
       </span>
