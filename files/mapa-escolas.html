@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa da Rede de Clubes de Ciências</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+
+  <style>
+    :root {
+      --surface: #ffffff;
+      --surface-soft: #f5f7f6;
+      --text: #17211e;
+      --muted: #5f6f69;
+      --border: #d7dfdc;
+      --primary: #176b57;
+      --normal: #176b57;
+      --maker: #99541a;
+      --other: #5c6470;
+      --danger: #a61b1b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--surface);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .map-app {
+      display: grid;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(170px, 230px) auto auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .field {
+      display: grid;
+      gap: 5px;
+    }
+
+    .field label {
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    input, select, button {
+      min-height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 8px 14px;
+      font-weight: 700;
+    }
+
+    button:hover { border-color: var(--primary); }
+
+    button.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: center;
+      min-height: 30px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .legend {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.24);
+    }
+
+    .legend-dot.normal { background: var(--normal); }
+    .legend-dot.maker { background: var(--maker); }
+
+    #map {
+      width: 100%;
+      height: 650px;
+      min-height: 420px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface-soft);
+    }
+
+    .status-error {
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    .school-marker {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border: 3px solid #fff;
+      border-radius: 50% 50% 50% 0;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+      transform: rotate(-45deg);
+    }
+
+    .school-marker::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .school-marker.normal { background: var(--normal); }
+    .school-marker.maker { background: var(--maker); }
+    .school-marker.other { background: var(--other); }
+
+    .popup-title {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .popup-row { margin: 5px 0; }
+
+    .popup-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      #map { height: 560px; }
+    }
+
+    @media (max-width: 500px) {
+      .toolbar { grid-template-columns: 1fr; }
+      #map { height: 500px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="map-app">
+    <section class="toolbar" aria-label="Filtros do mapa">
+      <div class="field">
+        <label for="search">Buscar escola ou endereço</label>
+        <input id="search" type="search" placeholder="Digite parte do nome">
+      </div>
+
+      <div class="field">
+        <label for="type-filter">Tipo de clube</label>
+        <select id="type-filter">
+          <option value="">Todos os tipos</option>
+        </select>
+      </div>
+
+      <button id="fit-button" type="button">Mostrar todas</button>
+      <button id="refresh-button" class="primary" type="button">Atualizar</button>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <span id="status">Carregando escolas…</span>
+      <span class="legend" aria-label="Legenda">
+        <span class="legend-item">
+          <span class="legend-dot normal" aria-hidden="true"></span>
+          Clube normal
+        </span>
+        <span class="legend-item">
+          <span class="legend-dot maker" aria-hidden="true"></span>
+          Clube maker
+        </span>
+      </span>
+    </section>
+
+    <div
+      id="map"
+      role="region"
+      aria-label="Mapa interativo das escolas da Rede de Clubes de Ciências"
+    ></div>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT5hlnDHDc03CRibxBWeWeg2QnXkDh9CXld-1znjtSu7pJsAfbkvvw9_gLsIZsvjyYvD8AnCYt2QzEb/pub?gid=171804455&single=true&output=csv';
+    const REFRESH_MS = 5 * 60 * 1000;
+    const DEFAULT_CENTER = [-25.42, -49.26];
+    const DEFAULT_ZOOM = 9;
+
+    const map = L.map('map', {
+      center: DEFAULT_CENTER,
+      zoom: DEFAULT_ZOOM,
+      scrollWheelZoom: false,
+    });
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    const clusters = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      spiderfyOnMaxZoom: true,
+      maxClusterRadius: 55,
+    });
+    map.addLayer(clusters);
+
+    const searchInput = document.getElementById('search');
+    const typeFilter = document.getElementById('type-filter');
+    const fitButton = document.getElementById('fit-button');
+    const refreshButton = document.getElementById('refresh-button');
+    const status = document.getElementById('status');
+
+    let allSchools = [];
+    let currentMarkers = [];
+    let refreshTimer = null;
+    let initialFitDone = false;
+    let lastUpdatedAt = null;
+
+    async function loadSchools({ manual = false } = {}) {
+      setStatus(manual ? 'Atualizando dados…' : 'Carregando escolas…');
+      refreshButton.disabled = true;
+
+      try {
+        // O parâmetro _ evita que o navegador reutilize uma versão antiga em cache.
+        const separator = CSV_URL.includes('?') ? '&' : '?';
+        const response = await fetch(`${CSV_URL}${separator}_=${Date.now()}`, {
+          cache: 'no-store',
+        });
+
+        if (!response.ok) {
+          throw new Error(`a planilha respondeu com o código ${response.status}`);
+        }
+
+        const csvText = await response.text();
+        const parsed = Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: 'greedy',
+          transformHeader: normalizeHeader,
+        });
+
+        if (parsed.errors.length) {
+          const seriousError = parsed.errors.find((error) => error.type !== 'FieldMismatch');
+          if (seriousError) {
+            throw new Error(seriousError.message);
+          }
+        }
+
+        const rejectedRows = [];
+        allSchools = parsed.data
+          .map((row, index) => normalizeSchool(row, index))
+          .filter((school) => {
+            const valid = school.escola && Number.isFinite(school.latitude) && Number.isFinite(school.longitude);
+            if (!valid) rejectedRows.push(school.sourceRow);
+            return valid;
+          });
+
+        lastUpdatedAt = new Date();
+        populateTypeFilter();
+        renderFilteredSchools();
+
+        if (rejectedRows.length) {
+          console.warn('Linhas ignoradas por falta de escola ou coordenadas válidas:', rejectedRows);
+        }
+      } catch (error) {
+        console.error(error);
+        setStatus(`Não foi possível carregar a planilha: ${error.message}.`, true);
+      } finally {
+        refreshButton.disabled = false;
+        window.clearTimeout(refreshTimer);
+        refreshTimer = window.setTimeout(() => loadSchools(), REFRESH_MS);
+      }
+    }
+
+    function normalizeSchool(row, index) {
+      const latitude = parseCoordinate(firstValue(row, ['lat', 'latitude']));
+      const longitude = parseCoordinate(firstValue(row, ['long', 'longitude', 'lng', 'lon']));
+
+      return {
+        id: cleanText(firstValue(row, ['n', 'id', 'numero'])) || String(index + 1),
+        escola: cleanText(firstValue(row, ['escola', 'nome_da_escola', 'nome_escola'])),
+        endereco: cleanText(firstValue(row, ['endereco', 'endereco_completo'])),
+        linkMaps: safeUrl(firstValue(row, ['link_maps', 'google_maps', 'maps', 'link'])),
+        latitude,
+        longitude,
+        tipo: cleanText(firstValue(row, ['tipo', 'tipo_de_clube', 'categoria'])) || 'Não informado',
+        sourceRow: index + 2,
+      };
+    }
+
+    function firstValue(row, aliases) {
+      for (const alias of aliases) {
+        if (Object.prototype.hasOwnProperty.call(row, alias) && String(row[alias] ?? '').trim() !== '') {
+          return row[alias];
+        }
+      }
+      return '';
+    }
+
+    function parseCoordinate(value) {
+      return Number(cleanText(value).replace(',', '.'));
+    }
+
+    function cleanText(value) {
+      return String(value == null ? '' : value).trim();
+    }
+
+    function safeUrl(value) {
+      const url = cleanText(value);
+      return /^https:\/\/[^\s]+$/i.test(url) ? url : '';
+    }
+
+    function normalizeHeader(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '');
+    }
+
+    function populateTypeFilter() {
+      const selected = typeFilter.value;
+      const types = [...new Set(allSchools.map((school) => school.tipo).filter(Boolean))]
+        .sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
+      typeFilter.innerHTML = '<option value="">Todos os tipos</option>';
+      types.forEach((type) => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeFilter.appendChild(option);
+      });
+
+      if (types.includes(selected)) typeFilter.value = selected;
+    }
+
+    function renderFilteredSchools({ fit = false } = {}) {
+      const query = normalizeText(searchInput.value);
+      const selectedType = typeFilter.value;
+
+      const filtered = allSchools.filter((school) => {
+        const matchesType = !selectedType || school.tipo === selectedType;
+        const haystack = normalizeText(`${school.escola} ${school.endereco} ${school.tipo}`);
+        const matchesQuery = !query || haystack.includes(query);
+        return matchesType && matchesQuery;
+      });
+
+      clusters.clearLayers();
+      currentMarkers = filtered.map(createMarker);
+      clusters.addLayers(currentMarkers);
+
+      const updated = lastUpdatedAt
+        ? ` Última leitura: ${new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(lastUpdatedAt)}.`
+        : '';
+      setStatus(`${filtered.length} de ${allSchools.length} escolas visíveis.${updated}`);
+
+      if ((fit || !initialFitDone) && currentMarkers.length) {
+        const bounds = L.featureGroup(currentMarkers).getBounds();
+        map.fitBounds(bounds.pad(0.08), { maxZoom: 13 });
+        initialFitDone = true;
+      }
+    }
+
+    function createMarker(school) {
+      const category = categoryClass(school.tipo);
+      const icon = L.divIcon({
+        className: '',
+        html: `<span class="school-marker ${category}" aria-hidden="true"></span>`,
+        iconSize: [24, 24],
+        iconAnchor: [12, 24],
+        popupAnchor: [0, -24],
+      });
+
+      return L.marker([school.latitude, school.longitude], {
+        icon,
+        title: school.escola,
+        keyboard: true,
+      }).bindPopup(buildPopup(school), { maxWidth: 330 });
+    }
+
+    function buildPopup(school) {
+      const link = school.linkMaps
+        ? `<a class="popup-link" href="${escapeAttribute(school.linkMaps)}" target="_blank" rel="noopener">Abrir no Google Maps</a>`
+        : '';
+
+      return `
+        <article>
+          <strong class="popup-title">${escapeHtml(school.escola)}</strong>
+          <div class="popup-row"><strong>Tipo:</strong> ${escapeHtml(school.tipo)}</div>
+          ${school.endereco ? `<div class="popup-row">${escapeHtml(school.endereco)}</div>` : ''}
+          ${link}
+        </article>
+      `;
+    }
+
+    function categoryClass(type) {
+      const normalized = normalizeText(type);
+      if (normalized.includes('maker')) return 'maker';
+      if (normalized.includes('normal')) return 'normal';
+      return 'other';
+    }
+
+    function normalizeText(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+    }
+
+    function escapeHtml(value) {
+      const element = document.createElement('div');
+      element.textContent = String(value || '');
+      return element.innerHTML;
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value).replace(/"/g, '&quot;');
+    }
+
+    function setStatus(message, isError = false) {
+      status.textContent = message;
+      status.classList.toggle('status-error', isError);
+    }
+
+    searchInput.addEventListener('input', () => renderFilteredSchools());
+    typeFilter.addEventListener('change', () => renderFilteredSchools({ fit: true }));
+    fitButton.addEventListener('click', () => renderFilteredSchools({ fit: true }));
+    refreshButton.addEventListener('click', () => loadSchools({ manual: true }));
+
+    loadSchools();
+  </script>
+</body>
+</html>
