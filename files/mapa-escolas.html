@@ -222,16 +222,6 @@
         </select>
       </div>
 
-      <div class="field">
-        <label>Filtros por função</label>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <label><input id="filter-orientador" type="checkbox"> Professor orientador UFPR</label>
-          <label><input id="filter-btns" type="checkbox"> Bolsista BTNS</label>
-          <label><input id="filter-btmn" type="checkbox"> Bolsista BTMN (apoio)</label>
-          <label><input id="filter-iniciacao" type="checkbox"> Iniciação Científica</label>
-        </div>
-      </div>
-
       <button id="fit-button" type="button">Mostrar todas</button>
       <button id="refresh-button" class="primary" type="button">Atualizar</button>
     </section>
@@ -274,7 +264,7 @@
     const map = L.map('map', {
       center: DEFAULT_CENTER,
       zoom: DEFAULT_ZOOM,
-      scrollWheelZoom: true,
+      scrollWheelZoom: false,
     });
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -291,10 +281,6 @@
 
     const searchInput = document.getElementById('search');
     const typeFilter = document.getElementById('type-filter');
-    const filterOrientador = document.getElementById('filter-orientador');
-    const filterBTNS = document.getElementById('filter-btns');
-    const filterBTMN = document.getElementById('filter-btmn');
-    const filterIniciacao = document.getElementById('filter-iniciacao');
     const fitButton = document.getElementById('fit-button');
     const refreshButton = document.getElementById('refresh-button');
     const status = document.getElementById('status');
@@ -371,8 +357,6 @@
       const latitude = parseCoordinate(firstValue(row, ['lat', 'latitude']));
       const longitude = parseCoordinate(firstValue(row, ['long', 'longitude', 'lng', 'lon']));
 
-      const rawRow = Object.values(row).map((v) => String(v == null ? '' : v)).join(' ');
-
       return {
         id: cleanText(firstValue(row, ['n', 'id', 'numero'])) || String(index + 1),
         escola: cleanText(firstValue(row, ['escola', 'nome_da_escola', 'nome_escola'])),
@@ -381,8 +365,6 @@
         latitude,
         longitude,
         tipo: cleanText(firstValue(row, ['tipo', 'tipo_de_clube', 'categoria'])) || 'Não informado',
-        // rawRow reúne todos os campos da linha para permitir filtros por palavras-chave
-        raw: rawRow,
         sourceRow: index + 2,
       };
     }
@@ -487,21 +469,7 @@
         const matchesType = !selectedType || school.tipo === selectedType;
         const haystack = normalizeText(`${school.escola} ${school.endereco} ${school.tipo}`);
         const matchesQuery = !query || haystack.includes(query);
-        const orientadorChecked = filterOrientador && filterOrientador.checked;
-        const btnsChecked = filterBTNS && filterBTNS.checked;
-        const btmnChecked = filterBTMN && filterBTMN.checked;
-        const iniciacaoChecked = filterIniciacao && filterIniciacao.checked;
-
-        const rawNormalized = normalizeText(school.raw || '');
-
-        const matchesRoles = (
-          (!orientadorChecked || rawNormalized.includes('ufpr')) &&
-          (!btnsChecked || rawNormalized.includes('btns')) &&
-          (!btmnChecked || rawNormalized.includes('btmn') || rawNormalized.includes('apoio')) &&
-          (!iniciacaoChecked || rawNormalized.includes('iniciac') || rawNormalized.includes('inic'))
-        );
-
-        return matchesType && matchesQuery && matchesRoles;
+        return matchesType && matchesQuery;
       });
 
       clusters.clearLayers();
@@ -587,10 +555,7 @@
 
     searchInput.addEventListener('input', () => renderFilteredSchools());
     typeFilter.addEventListener('change', () => renderFilteredSchools({ fit: true }));
-    if (filterOrientador) filterOrientador.addEventListener('change', () => renderFilteredSchools());
-    if (filterBTNS) filterBTNS.addEventListener('change', () => renderFilteredSchools());
-    if (filterBTMN) filterBTMN.addEventListener('change', () => renderFilteredSchools());
-    if (filterIniciacao) filterIniciacao.addEventListener('change', () => renderFilteredSchools());
+    
     fitButton.addEventListener('click', () => renderFilteredSchools({ fit: true }));
     refreshButton.addEventListener('click', () => loadSchools({ manual: true }));
 
