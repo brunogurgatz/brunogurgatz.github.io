@@ -262,13 +262,13 @@
     @media (min-width: 761px) and (pointer: fine) {
       html, body {
         height: 100%;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .map-app {
         height: 100%;
         grid-template-rows: auto minmax(0, 1fr) auto;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .summary {
@@ -283,6 +283,7 @@
 
       .toolbar {
         grid-row: 3;
+        overflow: visible;
       }
     }
 
