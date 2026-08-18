@@ -46,7 +46,7 @@
 
     .toolbar {
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) minmax(170px, 230px) auto auto;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 10px;
       align-items: end;
     }
@@ -216,7 +216,70 @@
       </div>
 
       <div class="field">
-        <label for="type-filter">Tipo de clube</label>
+        <label for="escola-filter">Escola</label>
+        <select id="escola-filter">
+          <option value="">Todas as escolas</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="btns-filter">BTNS</label>
+        <select id="btns-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="professor-clubista-filter">Professor(a) Clubista</label>
+        <select id="professor-clubista-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="professor-orientador-ufpr-filter">Professor orientador UFPR</label>
+        <select id="professor-orientador-ufpr-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="bolsista-btns-filter">Bolsista BTNS</label>
+        <select id="bolsista-btns-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="bolsista-btmn-apoio-filter">Bolsista BTMN (apoio)</label>
+        <select id="bolsista-btmn-apoio-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="iniciacao-cientifica-filter">Iniciação Científica</label>
+        <select id="iniciacao-cientifica-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="street-filter">Street</label>
+        <select id="street-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="mapa-filter">Mapa</label>
+        <select id="mapa-filter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="type-filter">Tipo</label>
         <select id="type-filter">
           <option value="">Todos os tipos</option>
         </select>
@@ -285,6 +348,19 @@
     const refreshButton = document.getElementById('refresh-button');
     const status = document.getElementById('status');
 
+    const filterConfig = [
+      { id: 'escola-filter', key: 'escola' },
+      { id: 'btns-filter', key: 'btns' },
+      { id: 'professor-clubista-filter', key: 'professorClubista' },
+      { id: 'professor-orientador-ufpr-filter', key: 'professorOrientadorUfpr' },
+      { id: 'bolsista-btns-filter', key: 'bolsistaBtns' },
+      { id: 'bolsista-btmn-apoio-filter', key: 'bolsistaBtmnApoio' },
+      { id: 'iniciacao-cientifica-filter', key: 'iniciacaoCientifica' },
+      { id: 'street-filter', key: 'street' },
+      { id: 'mapa-filter', key: 'mapa' },
+      { id: 'type-filter', key: 'tipo' },
+    ];
+
     let allSchools = [];
     let currentMarkers = [];
     let refreshTimer = null;
@@ -337,7 +413,7 @@
 
         invalidRowCount = rejectedRows.length;
         lastUpdatedAt = new Date();
-        populateTypeFilter();
+        populateFilterOptions();
         renderFilteredSchools();
 
         if (rejectedRows.length) {
@@ -354,19 +430,31 @@
     }
 
     function normalizeSchool(row, index) {
-      const latitude = parseCoordinate(firstValue(row, ['lat', 'latitude']));
-      const longitude = parseCoordinate(firstValue(row, ['long', 'longitude', 'lng', 'lon']));
+      const latitude = parseCoordinate(firstValue(row, ['lat', 'latitude', 'latitude_2']));
+      const longitude = parseCoordinate(firstValue(row, ['long', 'longitude', 'lng', 'lon', 'longitude_2']));
 
-      return {
+      const school = {
         id: cleanText(firstValue(row, ['n', 'id', 'numero'])) || String(index + 1),
         escola: cleanText(firstValue(row, ['escola', 'nome_da_escola', 'nome_escola'])),
-        endereco: cleanText(firstValue(row, ['endereco', 'endereco_completo'])),
-        linkMaps: safeUrl(firstValue(row, ['link_maps', 'google_maps', 'maps', 'link'])),
+        btns: cleanText(firstValue(row, ['btns', 'bt_ns', 'btns_1', 'bt_n_s'])),
+        professorClubista: cleanText(firstValue(row, ['professor_a_clubista', 'professora_clubista', 'professor_clubista', 'professorclubista', 'clubista'])),
+        professorOrientadorUfpr: cleanText(firstValue(row, ['professor_orientador_ufpr', 'professor_orientador', 'orientador_ufpr', 'prof_orientador_ufpr'])),
+        bolsistaBtns: cleanText(firstValue(row, ['bolsista_btns', 'bolsista_btns_1', 'bolsista_btns_2', 'bolsista_btns'])),
+        bolsistaBtmnApoio: cleanText(firstValue(row, ['bolsista_btmn_apoio', 'bolsista_btmn', 'bolsista_btmn_apoio_1', 'bolsista_btmn_apoio_2'])),
+        iniciacaoCientifica: cleanText(firstValue(row, ['iniciacao_cientifica', 'iniciacao_cientifica_1', 'iniciacao_cientifica_2', 'iniciacao_cientifica_ic', 'ic'])),
+        street: cleanText(firstValue(row, ['street', 'rua', 'logradouro', 'endereco', 'endereco_completo'])),
+        mapa: cleanText(firstValue(row, ['mapa', 'maps', 'link_maps', 'google_maps', 'link', 'mapa_link'])),
+        endereco: cleanText(firstValue(row, ['endereco', 'endereco_completo', 'street', 'rua', 'logradouro'])),
+        linkMaps: safeUrl(firstValue(row, ['link_maps', 'google_maps', 'maps', 'mapa', 'mapa_link', 'link'])),
         latitude,
         longitude,
         tipo: cleanText(firstValue(row, ['tipo', 'tipo_de_clube', 'categoria'])) || 'Não informado',
         sourceRow: index + 2,
       };
+
+      school.mapa = school.linkMaps || school.mapa || '';
+      school.endereco = school.street || school.endereco || '';
+      return school;
     }
 
     function firstValue(row, aliases) {
@@ -445,7 +533,34 @@
         .replace(/^_+|_+$/g, '');
     }
 
-    function populateTypeFilter() {
+    function populateFilterOptions() {
+      filterConfig.forEach(({ id, key }) => {
+        const select = document.getElementById(id);
+        if (!select) return;
+
+        const selected = select.value;
+        const values = [...new Set(
+          allSchools
+            .map((school) => school[key])
+            .filter((value) => value && String(value).trim() !== '')
+            .map((value) => String(value).trim())
+        )].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
+        select.innerHTML = '<option value="">Todos</option>';
+        values.forEach((value) => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = value;
+          select.appendChild(option);
+        });
+
+        if (values.includes(selected)) {
+          select.value = selected;
+        } else {
+          select.value = '';
+        }
+      });
+
       const selected = typeFilter.value;
       const types = [...new Set(allSchools.map((school) => school.tipo).filter(Boolean))]
         .sort((a, b) => a.localeCompare(b, 'pt-BR'));
@@ -463,13 +578,21 @@
 
     function renderFilteredSchools({ fit = false } = {}) {
       const query = normalizeText(searchInput.value);
-      const selectedType = typeFilter.value;
+      const filterValues = Object.fromEntries(
+        filterConfig.map(({ id, key }) => [key, document.getElementById(id)?.value || ''])
+      );
 
       const filtered = allSchools.filter((school) => {
-        const matchesType = !selectedType || school.tipo === selectedType;
-        const haystack = normalizeText(`${school.escola} ${school.endereco} ${school.tipo}`);
+        const matchesType = !filterValues.tipo || normalizeText(school.tipo) === normalizeText(filterValues.tipo);
+        const haystack = normalizeText(`${school.escola} ${school.endereco} ${school.tipo} ${school.street} ${school.professorClubista} ${school.professorOrientadorUfpr} ${school.bolsistaBtns} ${school.bolsistaBtmnApoio} ${school.iniciacaoCientifica}`);
         const matchesQuery = !query || haystack.includes(query);
-        return matchesType && matchesQuery;
+
+        const matchesFilters = filterConfig.every(({ key }) => {
+          if (!filterValues[key]) return true;
+          return normalizeText(school[key] || '') === normalizeText(filterValues[key]);
+        });
+
+        return matchesType && matchesQuery && matchesFilters;
       });
 
       clusters.clearLayers();
@@ -509,14 +632,36 @@
     }
 
     function buildPopup(school) {
+      const detailRows = [
+        ['Escola', school.escola],
+        ['BTNS', school.btns],
+        ['Professor(a) Clubista', school.professorClubista],
+        ['Professor orientador UFPR', school.professorOrientadorUfpr],
+        ['Bolsista BTNS', school.bolsistaBtns],
+        ['Bolsista BTMN (apoio)', school.bolsistaBtmnApoio],
+        ['Iniciação Científica', school.iniciacaoCientifica],
+        ['Tipo', school.tipo],
+        ['Street', school.street],
+        ['Mapa', school.mapa],
+      ].filter(([, value]) => value && String(value).trim() !== '');
+
       const link = school.linkMaps
         ? `<a class="popup-link" href="${escapeAttribute(school.linkMaps)}" target="_blank" rel="noopener">Abrir no Google Maps</a>`
         : '';
 
+      const details = detailRows
+        .map(([label, value]) => {
+          const text = label === 'Mapa' && school.linkMaps
+            ? `<a href="${escapeAttribute(school.linkMaps)}" target="_blank" rel="noopener">${escapeHtml(value)}</a>`
+            : escapeHtml(value);
+          return `<div class="popup-row"><strong>${escapeHtml(label)}:</strong> ${text}</div>`;
+        })
+        .join('');
+
       return `
         <article>
           <strong class="popup-title">${escapeHtml(school.escola)}</strong>
-          <div class="popup-row"><strong>Tipo:</strong> ${escapeHtml(school.tipo)}</div>
+          ${details}
           ${school.endereco ? `<div class="popup-row">${escapeHtml(school.endereco)}</div>` : ''}
           ${link}
         </article>
@@ -554,8 +699,13 @@
     }
 
     searchInput.addEventListener('input', () => renderFilteredSchools());
-    typeFilter.addEventListener('change', () => renderFilteredSchools({ fit: true }));
-    
+    filterConfig.forEach(({ id }) => {
+      const filter = document.getElementById(id);
+      if (filter) {
+        filter.addEventListener('change', () => renderFilteredSchools({ fit: true }));
+      }
+    });
+
     fitButton.addEventListener('click', () => renderFilteredSchools({ fit: true }));
     refreshButton.addEventListener('click', () => loadSchools({ manual: true }));
 
