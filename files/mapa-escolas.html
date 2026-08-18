@@ -75,6 +75,80 @@
       padding: 8px 10px;
     }
 
+    .filter-dropdown {
+      position: relative;
+    }
+
+    .filter-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 8px 12px;
+      min-height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .filter-toggle::after {
+      content: "▾";
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+
+    .filter-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 6px);
+      z-index: 10;
+      display: none;
+      max-height: 210px;
+      overflow: auto;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-dropdown.open .filter-menu {
+      display: block;
+    }
+
+    .filter-menu-header {
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 6px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 28px;
+      padding: 2px 0;
+      font-size: 0.82rem;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .checkbox-item input {
+      width: auto;
+      min-height: 0;
+      height: 15px;
+      width: 15px;
+      margin: 0;
+      accent-color: var(--primary);
+      flex: 0 0 auto;
+    }
+
     button {
       cursor: pointer;
       padding: 8px 14px;
@@ -132,6 +206,13 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       background: var(--surface-soft);
+      position: relative;
+      z-index: 1;
+    }
+
+    .leaflet-container {
+      width: 100%;
+      height: 100%;
     }
 
     .status-error {
@@ -211,81 +292,68 @@
   <main class="map-app">
     <section class="toolbar" aria-label="Filtros do mapa">
       <div class="field">
-        <label for="search">Buscar escola ou endereço</label>
+        <label for="search">Busca geral</label>
         <input id="search" type="search" placeholder="Digite parte do nome">
       </div>
 
       <div class="field">
-        <label for="escola-filter">Escola</label>
-        <select id="escola-filter">
-          <option value="">Todas as escolas</option>
-        </select>
+        <label>Escola</label>
+        <div id="escola-filter" class="filter-dropdown" data-label="Escola">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
       <div class="field">
-        <label for="btns-filter">BTNS</label>
-        <select id="btns-filter">
-          <option value="">Todos</option>
-        </select>
+        <label>Prof. Clubista</label>
+        <div id="professor-clubista-filter" class="filter-dropdown" data-label="Prof. Clubista">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
       <div class="field">
-        <label for="professor-clubista-filter">Professor(a) Clubista</label>
-        <select id="professor-clubista-filter">
-          <option value="">Todos</option>
-        </select>
+        <label>Prof. UFPR</label>
+        <div id="professor-orientador-ufpr-filter" class="filter-dropdown" data-label="Prof. UFPR">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
       <div class="field">
-        <label for="professor-orientador-ufpr-filter">Professor orientador UFPR</label>
-        <select id="professor-orientador-ufpr-filter">
-          <option value="">Todos</option>
-        </select>
+        <label>Bolsista BTNS</label>
+        <div id="bolsista-btns-filter" class="filter-dropdown" data-label="Bolsista BTNS">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
       <div class="field">
-        <label for="bolsista-btns-filter">Bolsista BTNS</label>
-        <select id="bolsista-btns-filter">
-          <option value="">Todos</option>
-        </select>
+        <label>Bolsista BTMN (apoio)</label>
+        <div id="bolsista-btmn-apoio-filter" class="filter-dropdown" data-label="Bolsista BTMN (apoio)">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
       <div class="field">
-        <label for="bolsista-btmn-apoio-filter">Bolsista BTMN (apoio)</label>
-        <select id="bolsista-btmn-apoio-filter">
-          <option value="">Todos</option>
-        </select>
+        <label>Iniciação Científica</label>
+        <div id="iniciacao-cientifica-filter" class="filter-dropdown" data-label="Iniciação Científica">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
       <div class="field">
-        <label for="iniciacao-cientifica-filter">Iniciação Científica</label>
-        <select id="iniciacao-cientifica-filter">
-          <option value="">Todos</option>
-        </select>
+        <label>Tipo</label>
+        <div id="type-filter" class="filter-dropdown" data-label="Tipo">
+          <button type="button" class="filter-toggle">Selecionar</button>
+          <div class="filter-menu"></div>
+        </div>
       </div>
 
-      <div class="field">
-        <label for="street-filter">Street</label>
-        <select id="street-filter">
-          <option value="">Todos</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="mapa-filter">Mapa</label>
-        <select id="mapa-filter">
-          <option value="">Todos</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="type-filter">Tipo</label>
-        <select id="type-filter">
-          <option value="">Todos os tipos</option>
-        </select>
-      </div>
-
-      <button id="fit-button" type="button">Mostrar todas</button>
+      <button id="fit-button" type="button">Centralizar</button>
+      <button id="clear-filters-button" type="button">Limpar Filtros</button>
       <button id="refresh-button" class="primary" type="button">Atualizar</button>
     </section>
 
@@ -294,11 +362,7 @@
       <span class="legend" aria-label="Legenda">
         <span class="legend-item">
           <span class="school-marker legend-marker normal" aria-hidden="true"></span>
-          Clube normal
-        </span>
-        <span class="legend-item">
-          <span class="school-marker legend-marker maker" aria-hidden="true"></span>
-          Clube maker
+          Clube
         </span>
       </span>
     </section>
@@ -345,19 +409,17 @@
     const searchInput = document.getElementById('search');
     const typeFilter = document.getElementById('type-filter');
     const fitButton = document.getElementById('fit-button');
+    const clearFiltersButton = document.getElementById('clear-filters-button');
     const refreshButton = document.getElementById('refresh-button');
     const status = document.getElementById('status');
 
     const filterConfig = [
       { id: 'escola-filter', key: 'escola' },
-      { id: 'btns-filter', key: 'btns' },
       { id: 'professor-clubista-filter', key: 'professorClubista' },
       { id: 'professor-orientador-ufpr-filter', key: 'professorOrientadorUfpr' },
       { id: 'bolsista-btns-filter', key: 'bolsistaBtns' },
       { id: 'bolsista-btmn-apoio-filter', key: 'bolsistaBtmnApoio' },
       { id: 'iniciacao-cientifica-filter', key: 'iniciacaoCientifica' },
-      { id: 'street-filter', key: 'street' },
-      { id: 'mapa-filter', key: 'mapa' },
       { id: 'type-filter', key: 'tipo' },
     ];
 
@@ -535,10 +597,14 @@
 
     function populateFilterOptions() {
       filterConfig.forEach(({ id, key }) => {
-        const select = document.getElementById(id);
-        if (!select) return;
+        const container = document.getElementById(id);
+        if (!container) return;
 
-        const selected = select.value;
+        const menu = container.querySelector('.filter-menu');
+        const button = container.querySelector('.filter-toggle');
+        const previousSelected = new Set(
+          Array.from(container.querySelectorAll('input[type="checkbox"]:checked')).map((input) => input.value)
+        );
         const values = [...new Set(
           allSchools
             .map((school) => school[key])
@@ -546,50 +612,157 @@
             .map((value) => String(value).trim())
         )].sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
-        select.innerHTML = '<option value="">Todos</option>';
-        values.forEach((value) => {
-          const option = document.createElement('option');
-          option.value = value;
-          option.textContent = value;
-          select.appendChild(option);
+        menu.innerHTML = '';
+
+        const allOption = document.createElement('label');
+        allOption.className = 'checkbox-item';
+        const allCheckbox = document.createElement('input');
+        allCheckbox.type = 'checkbox';
+        allCheckbox.value = '__all__';
+        allCheckbox.checked = previousSelected.size === 0;
+        allCheckbox.addEventListener('change', () => {
+          const allChecked = allCheckbox.checked;
+          const inputs = Array.from(menu.querySelectorAll('input[type="checkbox"]')).filter((input) => input.value !== '__all__');
+          inputs.forEach((input) => {
+            input.checked = false;
+          });
+          allCheckbox.checked = allChecked;
+          updateDropdownSummary(container);
+          renderFilteredSchools({ fit: true });
         });
 
-        if (values.includes(selected)) {
-          select.value = selected;
-        } else {
-          select.value = '';
-        }
+        const allText = document.createElement('span');
+        allText.textContent = 'Todos';
+        allOption.appendChild(allCheckbox);
+        allOption.appendChild(allText);
+        menu.appendChild(allOption);
+
+        values.forEach((value) => {
+          const wrapper = document.createElement('label');
+          wrapper.className = 'checkbox-item';
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.value = value;
+          checkbox.checked = previousSelected.has(value);
+          checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+              allCheckbox.checked = false;
+            }
+            updateDropdownSummary(container);
+            renderFilteredSchools({ fit: true });
+          });
+
+          const text = document.createElement('span');
+          text.textContent = value;
+
+          wrapper.appendChild(checkbox);
+          wrapper.appendChild(text);
+          menu.appendChild(wrapper);
+        });
+
+        button.textContent = selectedSummary(container);
+        button.setAttribute('aria-expanded', String(container.classList.contains('open')));
       });
 
-      const selected = typeFilter.value;
+      const previousSelectedTypes = new Set(
+        Array.from(typeFilter.querySelectorAll('input[type="checkbox"]:checked')).map((input) => input.value)
+      );
       const types = [...new Set(allSchools.map((school) => school.tipo).filter(Boolean))]
         .sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
-      typeFilter.innerHTML = '<option value="">Todos os tipos</option>';
-      types.forEach((type) => {
-        const option = document.createElement('option');
-        option.value = type;
-        option.textContent = type;
-        typeFilter.appendChild(option);
+      typeFilter.querySelector('.filter-menu').innerHTML = '';
+      const typeAllOption = document.createElement('label');
+      typeAllOption.className = 'checkbox-item';
+      const typeAllCheckbox = document.createElement('input');
+      typeAllCheckbox.type = 'checkbox';
+      typeAllCheckbox.value = '__all__';
+      typeAllCheckbox.checked = previousSelectedTypes.size === 0;
+      typeAllCheckbox.addEventListener('change', () => {
+        const allChecked = typeAllCheckbox.checked;
+        const inputs = Array.from(typeFilter.querySelectorAll('input[type="checkbox"]')).filter((input) => input.value !== '__all__');
+        inputs.forEach((input) => {
+          input.checked = false;
+        });
+        typeAllCheckbox.checked = allChecked;
+        updateDropdownSummary(typeFilter);
+        renderFilteredSchools({ fit: true });
       });
 
-      if (types.includes(selected)) typeFilter.value = selected;
+      const typeAllText = document.createElement('span');
+      typeAllText.textContent = 'Todos';
+      typeAllOption.appendChild(typeAllCheckbox);
+      typeAllOption.appendChild(typeAllText);
+      typeFilter.querySelector('.filter-menu').appendChild(typeAllOption);
+
+      types.forEach((type) => {
+        const wrapper = document.createElement('label');
+        wrapper.className = 'checkbox-item';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = type;
+        checkbox.checked = previousSelectedTypes.has(type);
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+            typeAllCheckbox.checked = false;
+          }
+          updateDropdownSummary(typeFilter);
+          renderFilteredSchools({ fit: true });
+        });
+
+        const text = document.createElement('span');
+        text.textContent = type;
+
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(text);
+        typeFilter.querySelector('.filter-menu').appendChild(wrapper);
+      });
+
+      updateDropdownSummary(typeFilter);
+    }
+
+    function updateDropdownSummary(container) {
+      const button = container.querySelector('.filter-toggle');
+      if (!button) return;
+      button.textContent = selectedSummary(container);
+    }
+
+    function selectedSummary(container) {
+      const selected = Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((checkbox) => checkbox.value)
+        .filter((value) => value !== '__all__');
+
+      if (!selected.length) {
+        return 'Todos';
+      }
+
+      return `${selected.length} selecionado${selected.length > 1 ? 's' : ''}`;
     }
 
     function renderFilteredSchools({ fit = false } = {}) {
       const query = normalizeText(searchInput.value);
       const filterValues = Object.fromEntries(
-        filterConfig.map(({ id, key }) => [key, document.getElementById(id)?.value || ''])
+        filterConfig.map(({ id, key }) => [
+          key,
+          Array.from(document.getElementById(id)?.querySelectorAll('input[type="checkbox"]:checked') || [])
+            .map((input) => input.value)
+            .filter((value) => value && value !== '__all__')
+        ])
       );
+      const selectedTypeValues = Array.from(typeFilter.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((input) => input.value)
+        .filter((value) => value && value !== '__all__');
 
       const filtered = allSchools.filter((school) => {
-        const matchesType = !filterValues.tipo || normalizeText(school.tipo) === normalizeText(filterValues.tipo);
+        const matchesType = !selectedTypeValues.length || selectedTypeValues.some((value) => normalizeText(school.tipo) === normalizeText(value));
         const haystack = normalizeText(`${school.escola} ${school.endereco} ${school.tipo} ${school.street} ${school.professorClubista} ${school.professorOrientadorUfpr} ${school.bolsistaBtns} ${school.bolsistaBtmnApoio} ${school.iniciacaoCientifica}`);
         const matchesQuery = !query || haystack.includes(query);
 
         const matchesFilters = filterConfig.every(({ key }) => {
-          if (!filterValues[key]) return true;
-          return normalizeText(school[key] || '') === normalizeText(filterValues[key]);
+          const values = filterValues[key] || [];
+          if (!values.length) return true;
+          return values.some((value) => normalizeText(school[key] || '') === normalizeText(value));
         });
 
         return matchesType && matchesQuery && matchesFilters;
@@ -641,18 +814,13 @@
         ['Bolsista BTMN (apoio)', school.bolsistaBtmnApoio],
         ['Iniciação Científica', school.iniciacaoCientifica],
         ['Tipo', school.tipo],
-        ['Street', school.street],
         ['Mapa', school.mapa],
       ].filter(([, value]) => value && String(value).trim() !== '');
-
-      const link = school.linkMaps
-        ? `<a class="popup-link" href="${escapeAttribute(school.linkMaps)}" target="_blank" rel="noopener">Abrir no Google Maps</a>`
-        : '';
 
       const details = detailRows
         .map(([label, value]) => {
           const text = label === 'Mapa' && school.linkMaps
-            ? `<a href="${escapeAttribute(school.linkMaps)}" target="_blank" rel="noopener">${escapeHtml(value)}</a>`
+            ? `<a href="${escapeAttribute(school.linkMaps)}" target="_blank" rel="noopener">Link Google Maps</a>`
             : escapeHtml(value);
           return `<div class="popup-row"><strong>${escapeHtml(label)}:</strong> ${text}</div>`;
         })
@@ -663,16 +831,12 @@
           <strong class="popup-title">${escapeHtml(school.escola)}</strong>
           ${details}
           ${school.endereco ? `<div class="popup-row">${escapeHtml(school.endereco)}</div>` : ''}
-          ${link}
         </article>
       `;
     }
 
     function categoryClass(type) {
-      const normalized = normalizeText(type);
-      if (normalized.includes('maker')) return 'maker';
-      if (normalized.includes('normal')) return 'normal';
-      return 'other';
+      return 'normal';
     }
 
     function normalizeText(value) {
@@ -699,14 +863,54 @@
     }
 
     searchInput.addEventListener('input', () => renderFilteredSchools());
-    filterConfig.forEach(({ id }) => {
-      const filter = document.getElementById(id);
-      if (filter) {
-        filter.addEventListener('change', () => renderFilteredSchools({ fit: true }));
-      }
+
+    document.querySelectorAll('.filter-dropdown').forEach((dropdown) => {
+      const button = dropdown.querySelector('.filter-toggle');
+      const menu = dropdown.querySelector('.filter-menu');
+
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        document.querySelectorAll('.filter-dropdown').forEach((other) => {
+          if (other !== dropdown) {
+            other.classList.remove('open');
+            other.querySelector('.filter-toggle').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        const isOpen = dropdown.classList.contains('open');
+        dropdown.classList.toggle('open', !isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove('open');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      menu.addEventListener('click', (event) => event.stopPropagation());
     });
 
+    function clearAllFilters() {
+      searchInput.value = '';
+
+      document.querySelectorAll('.filter-dropdown').forEach((dropdown) => {
+        const menu = dropdown.querySelector('.filter-menu');
+        if (!menu) return;
+
+        menu.querySelectorAll('input[type="checkbox"]').forEach((input) => {
+          input.checked = input.value === '__all__';
+        });
+
+        updateDropdownSummary(dropdown);
+      });
+
+      renderFilteredSchools({ fit: true });
+    }
+
     fitButton.addEventListener('click', () => renderFilteredSchools({ fit: true }));
+    clearFiltersButton.addEventListener('click', clearAllFilters);
     refreshButton.addEventListener('click', () => loadSchools({ manual: true }));
 
     loadSchools();
