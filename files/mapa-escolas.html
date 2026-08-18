@@ -44,6 +44,59 @@
       padding: 12px;
     }
 
+    .filter-panel {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .filter-panel-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 0;
+      background: linear-gradient(180deg, #ffffff 0%, #f4f7f6 100%);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .filter-panel-toggle .toggle-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      transition: transform 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .filter-panel.collapsed .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .filter-panel-content {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid var(--border);
+    }
+
+    .filter-panel.collapsed .filter-panel-content {
+      display: none;
+    }
+
     .toolbar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -267,7 +320,7 @@
 
       .map-app {
         height: 100%;
-        grid-template-rows: auto minmax(0, 1fr) auto;
+        grid-template-rows: auto auto minmax(0, 1fr);
         overflow: hidden;
       }
 
@@ -275,14 +328,14 @@
         grid-row: 1;
       }
 
-      #map {
+      .filter-panel {
         grid-row: 2;
-        height: 100%;
-        min-height: 0;
       }
 
-      .toolbar {
+      #map {
         grid-row: 3;
+        height: 100%;
+        min-height: 0;
       }
     }
 
@@ -309,78 +362,87 @@
       </span>
     </section>
 
+    <section class="filter-panel collapsed" aria-label="Painel de filtros do mapa">
+      <button type="button" class="filter-panel-toggle" aria-expanded="false" aria-controls="map-filters-panel">
+        <span>Filtros</span>
+        <span class="toggle-icon" aria-hidden="true">▾</span>
+      </button>
+
+      <div id="map-filters-panel" class="filter-panel-content">
+        <section class="toolbar" aria-label="Filtros do mapa">
+          <div class="field">
+            <label for="search">Busca geral</label>
+            <input id="search" type="search" placeholder="Digite parte do nome">
+          </div>
+
+          <div class="field">
+            <label>Escola</label>
+            <div id="escola-filter" class="filter-dropdown" data-label="Escola">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Prof. Clubista</label>
+            <div id="professor-clubista-filter" class="filter-dropdown" data-label="Prof. Clubista">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Prof. UFPR</label>
+            <div id="professor-orientador-ufpr-filter" class="filter-dropdown" data-label="Prof. UFPR">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Bolsista BTNS</label>
+            <div id="bolsista-btns-filter" class="filter-dropdown" data-label="Bolsista BTNS">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Bolsista BTMN (apoio)</label>
+            <div id="bolsista-btmn-apoio-filter" class="filter-dropdown" data-label="Bolsista BTMN (apoio)">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Iniciação Científica</label>
+            <div id="iniciacao-cientifica-filter" class="filter-dropdown" data-label="Iniciação Científica">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Tipo</label>
+            <div id="type-filter" class="filter-dropdown" data-label="Tipo">
+              <button type="button" class="filter-toggle">Selecionar</button>
+              <div class="filter-menu"></div>
+            </div>
+          </div>
+
+          <button id="fit-button" type="button">Centralizar</button>
+          <button id="clear-filters-button" type="button">Limpar Filtros</button>
+          <button id="refresh-button" class="primary" type="button">Atualizar</button>
+        </section>
+      </div>
+    </section>
+
     <div
       id="map"
       role="region"
       aria-label="Mapa interativo das escolas da Rede de Clubes de Ciências"
     ></div>
-
-    <section class="toolbar" aria-label="Filtros do mapa">
-      <div class="field">
-        <label for="search">Busca geral</label>
-        <input id="search" type="search" placeholder="Digite parte do nome">
-      </div>
-
-      <div class="field">
-        <label>Escola</label>
-        <div id="escola-filter" class="filter-dropdown" data-label="Escola">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Prof. Clubista</label>
-        <div id="professor-clubista-filter" class="filter-dropdown" data-label="Prof. Clubista">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Prof. UFPR</label>
-        <div id="professor-orientador-ufpr-filter" class="filter-dropdown" data-label="Prof. UFPR">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Bolsista BTNS</label>
-        <div id="bolsista-btns-filter" class="filter-dropdown" data-label="Bolsista BTNS">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Bolsista BTMN (apoio)</label>
-        <div id="bolsista-btmn-apoio-filter" class="filter-dropdown" data-label="Bolsista BTMN (apoio)">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Iniciação Científica</label>
-        <div id="iniciacao-cientifica-filter" class="filter-dropdown" data-label="Iniciação Científica">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Tipo</label>
-        <div id="type-filter" class="filter-dropdown" data-label="Tipo">
-          <button type="button" class="filter-toggle">Selecionar</button>
-          <div class="filter-menu"></div>
-        </div>
-      </div>
-
-      <button id="fit-button" type="button">Centralizar</button>
-      <button id="clear-filters-button" type="button">Limpar Filtros</button>
-      <button id="refresh-button" class="primary" type="button">Atualizar</button>
-    </section>
   </main>
 
   <script
@@ -874,6 +936,16 @@
     function setStatus(message, isError = false) {
       status.textContent = message;
       status.classList.toggle('status-error', isError);
+    }
+
+    const filterPanel = document.querySelector('.filter-panel');
+    const filterPanelToggle = document.querySelector('.filter-panel-toggle');
+
+    if (filterPanel && filterPanelToggle) {
+      filterPanelToggle.addEventListener('click', () => {
+        const isCollapsed = filterPanel.classList.toggle('collapsed');
+        filterPanelToggle.setAttribute('aria-expanded', String(!isCollapsed));
+      });
     }
 
     searchInput.addEventListener('input', () => renderFilteredSchools());
