@@ -267,13 +267,22 @@
 
       .map-app {
         height: 100%;
-        grid-template-rows: auto auto minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr) auto;
         overflow: hidden;
       }
 
+      .summary {
+        grid-row: 1;
+      }
+
       #map {
+        grid-row: 2;
         height: 100%;
         min-height: 0;
+      }
+
+      .toolbar {
+        grid-row: 3;
       }
     }
 
@@ -290,6 +299,22 @@
 </head>
 <body>
   <main class="map-app">
+    <section class="summary" aria-live="polite">
+      <span id="status">Carregando escolas…</span>
+      <span class="legend" aria-label="Legenda">
+        <span class="legend-item">
+          <span class="school-marker legend-marker normal" aria-hidden="true"></span>
+          Clube
+        </span>
+      </span>
+    </section>
+
+    <div
+      id="map"
+      role="region"
+      aria-label="Mapa interativo das escolas da Rede de Clubes de Ciências"
+    ></div>
+
     <section class="toolbar" aria-label="Filtros do mapa">
       <div class="field">
         <label for="search">Busca geral</label>
@@ -356,22 +381,6 @@
       <button id="clear-filters-button" type="button">Limpar Filtros</button>
       <button id="refresh-button" class="primary" type="button">Atualizar</button>
     </section>
-
-    <section class="summary" aria-live="polite">
-      <span id="status">Carregando escolas…</span>
-      <span class="legend" aria-label="Legenda">
-        <span class="legend-item">
-          <span class="school-marker legend-marker normal" aria-hidden="true"></span>
-          Clube
-        </span>
-      </span>
-    </section>
-
-    <div
-      id="map"
-      role="region"
-      aria-label="Mapa interativo das escolas da Rede de Clubes de Ciências"
-    ></div>
   </main>
 
   <script
