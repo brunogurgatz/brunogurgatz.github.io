@@ -45,7 +45,10 @@
     font-weight: 700;
   }
 
-  .form-select {
+  .search-field { grid-column: 1 / -1; }
+
+  .form-select,
+  .form-input {
     width: 100%;
     min-height: 42px;
     padding: 8px 10px;
@@ -81,6 +84,9 @@
 <div id="election-map-litoral-pr">
   <h2>Locais de votação — Presidente, 1º turno</h2>
   <div class="viz-controls" aria-label="Filtros do mapa">
+    <label class="form-label search-field" for="map-search">Busca geral
+      <input class="form-input" id="map-search" type="search" autocomplete="off" placeholder="Escola, local, município, bairro, endereço ou número">
+    </label>
     <label class="form-label" for="map-city">Município
       <select class="form-select" id="map-city">
         <option value="Todos">Todos</option>
@@ -170,6 +176,7 @@
     if (!root || root.dataset.mapInitialized === "true") return;
     root.dataset.mapInitialized = "true";
     const svg = d3.select(root.querySelector("svg"));
+    const searchInput = root.querySelector("#map-search");
     const citySelect = root.querySelector("#map-city");
     const metricSelect = root.querySelector("#map-metric");
     const locationSelect = root.querySelector("#map-location");
@@ -190,6 +197,7 @@
     };
   
     const saved = window.openai?.widgetState?.privateContent || {};
+    searchInput.value = typeof saved.search === "string" ? saved.search : "";
     citySelect.value = [...citySelect.options].some((o) => o.value === saved.city) ? saved.city : "Todos";
     metricSelect.value = metrics[saved.metric] ? saved.metric : "abstencoes";
     let selectedKey = saved.localKey || null;
@@ -200,12 +208,43 @@
       .on("zoom", (event) => {
         currentZoom = event.transform;
         svg.select('g[data-layer="viewport"]').attr("transform", currentZoom);
+        svg.selectAll("circle.location-point")
+          .attr("r", function () { return Number(this.dataset.baseRadius) / currentZoom.k; });
+        svg.selectAll("text.municipality-label")
+          .style("font-size", `${12 / currentZoom.k}px`);
       });
 
     svg.call(zoomBehavior).on("dblclick.zoom", null);
   
+    function normalizeSearch(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("pt-BR")
+        .trim();
+    }
+
+    function searchableText(d) {
+      return normalizeSearch([
+        ...Object.values(d),
+        `local ${d.codigo_local}`,
+        `${formatter.format(d.quantidade_secoes)} seções`,
+        `${formatter.format(d.aptos)} eleitores aptos`,
+        `${formatter.format(d.comparecimento)} comparecimentos`,
+        `${formatter.format(d.abstencoes)} abstenções`,
+        `${percent.format(d.taxa_abstencao)} taxa de abstenção`,
+        `${formatter.format(d.brancos_mais_nulos)} votos brancos e nulos`,
+        `${percent.format(d.taxa_brancos_nulos)} taxa de votos brancos e nulos`
+      ].join(" "));
+    }
+
+    const searchIndex = new Map(points.map((d) => [d.key, searchableText(d)]));
+
     function visiblePoints() {
-      return citySelect.value === "Todos" ? points : points.filter((d) => d.municipio === citySelect.value);
+      const cityPoints = citySelect.value === "Todos" ? points : points.filter((d) => d.municipio === citySelect.value);
+      const terms = normalizeSearch(searchInput.value).split(/\s+/).filter(Boolean);
+      if (!terms.length) return cityPoints;
+      return cityPoints.filter((d) => terms.every((term) => searchIndex.get(d.key).includes(term)));
     }
   
     function updateLocationOptions(list) {
@@ -224,6 +263,7 @@
         selectedKey = [...list].sort((a, b) => a[metric.rank] - b[metric.rank] || b[metricSelect.value] - a[metricSelect.value])[0]?.key || null;
       }
       locationSelect.value = selectedKey;
+      locationSelect.disabled = list.length === 0;
     }
   
     function updateDetail(d) {
@@ -249,8 +289,8 @@
       const persist = window.openai?.setWidgetState;
       if (typeof persist !== "function") return;
       Promise.resolve(persist.call(window.openai, {
-        modelContent: { city: citySelect.value, metric: metricSelect.value, localKey: selectedKey },
-        privateContent: { city: citySelect.value, metric: metricSelect.value, localKey: selectedKey }
+        modelContent: { search: searchInput.value, city: citySelect.value, metric: metricSelect.value, localKey: selectedKey },
+        privateContent: { search: searchInput.value, city: citySelect.value, metric: metricSelect.value, localKey: selectedKey }
       })).catch(() => {});
     }
   
@@ -295,12 +335,17 @@
         .attr("class", "municipality-label")
         .attr("transform", (d) => `translate(${path.centroid(d)})`)
         .attr("dy", "0.35em")
+        .style("font-size", `${12 / currentZoom.k}px`)
         .text((d) => d.properties.shortName);
   
       const metric = metricSelect.value;
       const values = list.map((d) => d[metric]);
-      const radius = d3.scaleSqrt().domain(d3.extent(values)).range([4.5, width < 520 ? 12 : 17]);
-      sizeLegend.textContent = `${metrics[metric].label}: ${metrics[metric].format(d3.min(values))} a ${metrics[metric].format(d3.max(values))}`;
+      const radius = list.length
+        ? d3.scaleSqrt().domain(d3.extent(values)).range([4.5, width < 520 ? 12 : 17])
+        : () => 0;
+      sizeLegend.textContent = list.length
+        ? `${formatter.format(list.length)} ${list.length === 1 ? "local" : "locais"} · ${metrics[metric].label}: ${metrics[metric].format(d3.min(values))} a ${metrics[metric].format(d3.max(values))}`
+        : "Nenhum local encontrado";
   
       const pointLayer = viewport.append("g").attr("data-sub-layer", "locations");
       pointLayer.selectAll("circle")
@@ -309,7 +354,8 @@
         .attr("class", (d) => `location-point${d[metrics[metric].rank] <= 5 ? " is-top" : ""}${d.key === selectedKey ? " is-selected" : ""}`)
         .attr("cx", (d) => projection([d.longitude, d.latitude])[0])
         .attr("cy", (d) => projection([d.longitude, d.latitude])[1])
-        .attr("r", (d) => radius(d[metric]))
+        .attr("data-base-radius", (d) => radius(d[metric]))
+        .attr("r", (d) => radius(d[metric]) / currentZoom.k)
         .attr("role", "button")
         .attr("aria-label", (d) => `${d.nome_local}, ${d.municipio}: ${metrics[metric].label} ${metrics[metric].format(d[metric])}`)
         .attr("data-tooltip", (d) => `${d.nome_local} · ${metrics[metric].label}: ${metrics[metric].format(d[metric])}`)
@@ -333,12 +379,14 @@
     zoomOutButton.addEventListener("click", () => svg.transition().duration(180).call(zoomBehavior.scaleBy, 1 / 1.4));
     zoomResetButton.addEventListener("click", () => resetZoom());
 
+    searchInput.addEventListener("input", () => { selectedKey = null; resetZoom({ animate: false }); draw(); saveState(); });
     citySelect.addEventListener("change", () => { selectedKey = null; resetZoom({ animate: false }); draw(); saveState(); });
     metricSelect.addEventListener("change", () => { selectedKey = null; resetZoom({ animate: false }); draw(); saveState(); });
     locationSelect.addEventListener("change", () => { selectedKey = locationSelect.value; draw(); saveState(); });
     window.addEventListener("openai:set_globals", (event) => {
       const state = event.detail?.globals?.widgetState?.privateContent;
       if (!state) return;
+      if (typeof state.search === "string") searchInput.value = state.search;
       if ([...citySelect.options].some((o) => o.value === state.city)) citySelect.value = state.city;
       if (metrics[state.metric]) metricSelect.value = state.metric;
       selectedKey = state.localKey || null;
