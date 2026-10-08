@@ -148,7 +148,7 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+  provider               :  "custom" # Plausible Analytics via _includes/analytics-providers/custom.html
   google:
     tracking_id          :
 
