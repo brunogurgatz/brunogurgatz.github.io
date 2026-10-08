@@ -9,10 +9,17 @@
     // A página Jekyll já registra a visita quando o mapa está incorporado.
     // Carrega o Plausible aqui somente quando o mapa é aberto diretamente.
     if (window.self === window.top && window.location.hostname === "brunogurgatz.github.io") {
+      window.plausible = window.plausible || function () {
+        (plausible.q = plausible.q || []).push(arguments);
+      };
+      plausible.init = plausible.init || function (options) {
+        plausible.o = options || {};
+      };
+      plausible.init();
+
       const analyticsScript = document.createElement("script");
-      analyticsScript.defer = true;
-      analyticsScript.dataset.domain = "brunogurgatz.github.io";
-      analyticsScript.src = "https://plausible.io/js/script.js";
+      analyticsScript.async = true;
+      analyticsScript.src = "https://plausible.io/js/pa-FWN4lWk9_lc4FbJ8MBZGL.js";
       document.head.appendChild(analyticsScript);
     }
   </script>
