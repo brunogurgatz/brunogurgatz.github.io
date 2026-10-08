@@ -8,7 +8,7 @@ redirect_from:
   - /markdown.html
 ---
 
-## [Projeto 2: Prioridades Eleitorais no Litoral do Paraná](/files/mapa-prioridades-eleitorais.html)
+## [Projeto 2: Prioridades Eleitorais no Litoral do Paraná](/projetos/prioridades-eleitorais/)
 
 Explore os locais de votação de Guaratuba, Matinhos, Paranaguá e Pontal do Paraná com maiores números e taxas de abstenção, votos brancos e votos nulos para Presidente no primeiro turno de 2026.
 

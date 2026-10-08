@@ -145,6 +145,8 @@
   #election-map-litoral-pr .municipality.is-muted { opacity: 0.28; }
   #election-map-litoral-pr .municipality-label { fill: var(--muted-foreground); font-size: 12px; font-weight: 500; text-anchor: middle; pointer-events: none; }
   #election-map-litoral-pr .location-point { fill: var(--viz-series-1); fill-opacity: 0.58; stroke: var(--background); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  #election-map-litoral-pr .location-point { cursor: pointer; }
+  #election-map-litoral-pr .location-hit-area { fill: transparent; stroke: transparent; cursor: pointer; pointer-events: all; }
   #election-map-litoral-pr .location-point.is-top { fill: var(--viz-series-2); fill-opacity: 0.86; }
   #election-map-litoral-pr .location-point.is-selected { stroke: var(--foreground); stroke-width: 2.5; fill-opacity: 1; }
   #election-map-litoral-pr .map-legend { margin: 0.45rem 0 0.7rem; gap: 1rem; }
@@ -212,6 +214,8 @@
         currentZoom = event.transform;
         svg.select('g[data-layer="viewport"]').attr("transform", currentZoom);
         svg.selectAll("circle.location-point")
+          .attr("r", function () { return Number(this.dataset.baseRadius) / currentZoom.k; });
+        svg.selectAll("circle.location-hit-area")
           .attr("r", function () { return Number(this.dataset.baseRadius) / currentZoom.k; });
         svg.selectAll("text.municipality-label")
           .style("font-size", `${12 / currentZoom.k}px`);
@@ -350,6 +354,26 @@
         ? `${formatter.format(list.length)} ${list.length === 1 ? "local" : "locais"} · ${metrics[metric].label}: ${metrics[metric].format(d3.min(values))} a ${metrics[metric].format(d3.max(values))}`
         : "Nenhum local encontrado";
   
+      const selectLocation = (_, d) => {
+        selectedKey = d.key;
+        locationSelect.value = d.key;
+        updateDetail(d);
+        saveState();
+        draw();
+      };
+
+      const hitLayer = viewport.append("g").attr("data-sub-layer", "hit-areas");
+      hitLayer.selectAll("circle")
+        .data(list, (d) => d.key)
+        .join("circle")
+        .attr("class", "location-hit-area")
+        .attr("cx", (d) => projection([d.longitude, d.latitude])[0])
+        .attr("cy", (d) => projection([d.longitude, d.latitude])[1])
+        .attr("data-base-radius", (d) => Math.max(radius(d[metric]) + 6, 12))
+        .attr("r", (d) => Math.max(radius(d[metric]) + 6, 12) / currentZoom.k)
+        .attr("aria-hidden", "true")
+        .on("click", selectLocation);
+
       const pointLayer = viewport.append("g").attr("data-sub-layer", "locations");
       pointLayer.selectAll("circle")
         .data(list, (d) => d.key)
@@ -362,13 +386,7 @@
         .attr("role", "button")
         .attr("aria-label", (d) => `${d.nome_local}, ${d.municipio}: ${metrics[metric].label} ${metrics[metric].format(d[metric])}`)
         .attr("data-tooltip", (d) => `${d.nome_local} · ${metrics[metric].label}: ${metrics[metric].format(d[metric])}`)
-        .on("click", (_, d) => {
-          selectedKey = d.key;
-          locationSelect.value = d.key;
-          updateDetail(d);
-          saveState();
-          draw();
-        });
+        .on("click", selectLocation);
   
       updateDetail(list.find((d) => d.key === selectedKey));
     }
