@@ -83,6 +83,7 @@
 <body>
 <div id="election-map-litoral-pr">
   <h2>Locais de votação — Presidente, 1º turno</h2>
+  <p class="map-source">Fonte dos dados eleitorais: <a href="https://dadosabertos.tse.jus.br/group/resultados" target="_blank" rel="noopener">Boletins de Urna do 1º turno de 2026, Portal de Dados Abertos do TSE</a>.</p>
   <div class="viz-controls" aria-label="Filtros do mapa">
     <label class="form-label search-field" for="map-search">Busca geral
       <input class="form-input" id="map-search" type="search" autocomplete="off" placeholder="Escola, local, município, bairro, endereço ou número">
@@ -130,6 +131,8 @@
 <style>
   #election-map-litoral-pr { color: var(--foreground); font-size: var(--font-size-base); }
   #election-map-litoral-pr h2 { margin: 0 0 0.75rem; }
+  #election-map-litoral-pr .map-source { margin: -0.35rem 0 0.9rem; color: var(--muted-foreground); font-size: 0.78rem; line-height: 1.4; }
+  #election-map-litoral-pr .map-source a { color: inherit; text-decoration: underline; text-underline-offset: 0.12em; }
   #election-map-litoral-pr .viz-controls { margin-bottom: 0.75rem; }
   #election-map-litoral-pr .map-stage { min-height: 470px; position: relative; }
   #election-map-litoral-pr svg { display: block; width: 100%; height: auto; overflow: hidden; }
@@ -190,10 +193,10 @@
     const formatter = new Intl.NumberFormat("pt-BR");
     const percent = new Intl.NumberFormat("pt-BR", { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 });
     const metrics = {
-      abstencoes: { label: "Abstenções", rank: "rank_abstencoes", format: formatter.format, denominator: "aptos" },
-      taxa_abstencao: { label: "Taxa de abstenção", rank: "rank_taxa_abstencao", format: percent.format, denominator: "aptos" },
-      brancos_mais_nulos: { label: "Brancos + nulos", rank: "rank_brancos_nulos", format: formatter.format, denominator: "comparecimento" },
-      taxa_brancos_nulos: { label: "Taxa de brancos + nulos", rank: "rank_taxa_brancos_nulos", format: percent.format, denominator: "comparecimento" }
+      abstencoes: { label: "Abstenções", rank: "rank_abstencoes", format: formatter.format, denominator: "aptos", baseLabel: "Eleitores aptos no local" },
+      taxa_abstencao: { label: "Taxa de abstenção", rank: "rank_taxa_abstencao", format: percent.format, denominator: "aptos", baseLabel: "Eleitores aptos no local" },
+      brancos_mais_nulos: { label: "Brancos + nulos", rank: "rank_brancos_nulos", format: formatter.format, denominator: "comparecimento", baseLabel: "Comparecimento no local" },
+      taxa_brancos_nulos: { label: "Taxa de brancos + nulos", rank: "rank_taxa_brancos_nulos", format: percent.format, denominator: "comparecimento", baseLabel: "Comparecimento no local" }
     };
   
     const saved = window.openai?.widgetState?.privateContent || {};
@@ -280,7 +283,7 @@
             <span class="detail-value text-muted">${d.endereco}</span>
           </div>
           <div><span class="detail-label">${metric.label}</span><span class="detail-value tabular-nums">${metric.format(d[metricSelect.value])}</span></div>
-          <div><span class="detail-label">Base</span><span class="detail-value tabular-nums">${formatter.format(d[metric.denominator])}</span></div>
+          <div><span class="detail-label">${metric.baseLabel}</span><span class="detail-value tabular-nums">${formatter.format(d[metric.denominator])}</span></div>
           <div><span class="detail-label">Seções</span><span class="detail-value tabular-nums">${formatter.format(d.quantidade_secoes)}</span></div>
         </div>`;
     }
