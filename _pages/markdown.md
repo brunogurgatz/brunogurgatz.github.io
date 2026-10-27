@@ -8,6 +8,16 @@ redirect_from:
   - /markdown.html
 ---
 
+## [Projeto 3: Comunica Fácil — apoio à comunicação](/files/comunicacao-acessivel.html){:target="_blank" rel="noopener"}
+
+Ferramenta visual e acessível para expressar preferências de alimentação e higiene e formar mensagens com um teclado de letras, números e sinais. O projeto abre em uma nova janela e pode ser usado com toque, mouse ou teclado.
+
+<p style="font-size: 0.9rem; margin-top: 0.75rem; margin-bottom: 2.5rem;">
+  <a href="/files/comunicacao-acessivel.html" target="_blank" rel="noopener">
+    Abrir a ferramenta de comunicação
+  </a>
+</p>
+
 ## [Projeto 2: Prioridades Eleitorais no Litoral do Paraná](/projetos/prioridades-eleitorais/)
 
 Explore os locais de votação de Guaratuba, Matinhos, Paranaguá e Pontal do Paraná com maiores números e taxas de abstenção, votos brancos e votos nulos para Presidente no primeiro turno de 2026.

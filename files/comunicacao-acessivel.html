@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ferramenta visual de apoio à comunicação com escolhas de alimentação, higiene e teclado acessível.">
+  <meta name="theme-color" content="#0b3a6f">
+  <title>Comunica Fácil — Apoio à comunicação</title>
+  <link rel="stylesheet" href="/assets/css/comunicacao-acessivel.css">
+  <script>
+    if (window.self === window.top && window.location.hostname === "brunogurgatz.github.io") {
+      window.plausible = window.plausible || function () {
+        (plausible.q = plausible.q || []).push(arguments);
+      };
+      plausible.init = plausible.init || function (options) {
+        plausible.o = options || {};
+      };
+      plausible.init();
+
+      const analyticsScript = document.createElement("script");
+      analyticsScript.async = true;
+      analyticsScript.src = "https://plausible.io/js/pa-FWN4lWk9_lc4FbJ8MBZGL.js";
+      document.head.appendChild(analyticsScript);
+    }
+  </script>
+  <script defer src="/assets/js/comunicacao-acessivel.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand__icon" aria-hidden="true">💬</span>
+      <div>
+        <p class="brand__eyebrow">Ferramenta de apoio</p>
+        <h1>Comunica Fácil</h1>
+        <p class="brand__subtitle">Escolha, organize e escreva para se comunicar.</p>
+      </div>
+    </div>
+    <p class="interaction-note"><span aria-hidden="true">☝️</span> Use com toque, mouse ou teclado</p>
+  </header>
+
+  <nav class="tabs" aria-label="Aplicativos de comunicação" role="tablist">
+    <button class="tab is-active" id="tab-alimentacao" type="button" role="tab" aria-selected="true" aria-controls="alimentacao" data-tab="alimentacao">
+      <span class="tab__icon" aria-hidden="true">🍽️</span>
+      <span>Alimentação</span>
+    </button>
+    <button class="tab" id="tab-higiene" type="button" role="tab" aria-selected="false" aria-controls="higiene" data-tab="higiene" tabindex="-1">
+      <span class="tab__icon" aria-hidden="true">🧼</span>
+      <span>Higiene</span>
+    </button>
+    <button class="tab" id="tab-escrita" type="button" role="tab" aria-selected="false" aria-controls="escrita" data-tab="escrita" tabindex="-1">
+      <span class="tab__icon" aria-hidden="true">⌨️</span>
+      <span>Escrita</span>
+    </button>
+  </nav>
+
+  <main id="conteudo" class="app-main">
+    <section class="tab-panel is-active" id="alimentacao" role="tabpanel" aria-labelledby="tab-alimentacao">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Escolhas do dia</p>
+        <h2>O que você quer comer?</h2>
+        <p>Arraste um alimento para uma das áreas. Você também pode tocar no cartão e depois tocar em “Colocar aqui”.</p>
+      </div>
+
+      <div class="choice-layout" data-category="alimentacao">
+        <section class="library-panel" aria-labelledby="titulo-alimentos">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-heading__icon" aria-hidden="true">🍎</p>
+              <h3 id="titulo-alimentos">Alimentos</h3>
+            </div>
+            <button class="clear-category secondary-button" type="button" data-category="alimentacao">Limpar escolhas</button>
+          </div>
+          <p class="selection-help" id="ajuda-alimentacao">Toque em um cartão para selecioná-lo.</p>
+          <div class="choice-grid" id="lista-alimentacao" aria-describedby="ajuda-alimentacao"></div>
+        </section>
+
+        <div class="zones-column">
+          <section class="drop-zone drop-zone--want" data-category="alimentacao" data-zone="want" aria-labelledby="alimentacao-quero-titulo">
+            <div class="zone-heading">
+              <div>
+                <span class="zone-heading__icon" aria-hidden="true">✅</span>
+                <h3 id="alimentacao-quero-titulo">Quero</h3>
+              </div>
+              <button class="assign-button assign-button--want" type="button" data-category="alimentacao" data-zone="want">Colocar aqui</button>
+            </div>
+            <div class="zone-list" id="alimentacao-quero" aria-live="polite"></div>
+            <p class="empty-message">Arraste ou escolha um alimento.</p>
+          </section>
+
+          <section class="drop-zone drop-zone--avoid" data-category="alimentacao" data-zone="avoid" aria-labelledby="alimentacao-nao-quero-titulo">
+            <div class="zone-heading">
+              <div>
+                <span class="zone-heading__icon" aria-hidden="true">❌</span>
+                <h3 id="alimentacao-nao-quero-titulo">Não quero</h3>
+              </div>
+              <button class="assign-button assign-button--avoid" type="button" data-category="alimentacao" data-zone="avoid">Colocar aqui</button>
+            </div>
+            <div class="zone-list" id="alimentacao-nao-quero" aria-live="polite"></div>
+            <p class="empty-message">Arraste ou escolha um alimento.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="higiene" role="tabpanel" aria-labelledby="tab-higiene" hidden>
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Cuidados pessoais</p>
+        <h2>O que você quer fazer agora?</h2>
+        <p>Arraste uma atividade para uma das áreas. Você também pode tocar no cartão e depois tocar em “Colocar aqui”.</p>
+      </div>
+
+      <div class="choice-layout" data-category="higiene">
+        <section class="library-panel" aria-labelledby="titulo-higiene">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-heading__icon" aria-hidden="true">🫧</p>
+              <h3 id="titulo-higiene">Atividades de higiene</h3>
+            </div>
+            <button class="clear-category secondary-button" type="button" data-category="higiene">Limpar escolhas</button>
+          </div>
+          <p class="selection-help" id="ajuda-higiene">Toque em um cartão para selecioná-lo.</p>
+          <div class="choice-grid" id="lista-higiene" aria-describedby="ajuda-higiene"></div>
+        </section>
+
+        <div class="zones-column">
+          <section class="drop-zone drop-zone--want" data-category="higiene" data-zone="want" aria-labelledby="higiene-quero-titulo">
+            <div class="zone-heading">
+              <div>
+                <span class="zone-heading__icon" aria-hidden="true">✅</span>
+                <h3 id="higiene-quero-titulo">Quero</h3>
+              </div>
+              <button class="assign-button assign-button--want" type="button" data-category="higiene" data-zone="want">Colocar aqui</button>
+            </div>
+            <div class="zone-list" id="higiene-quero" aria-live="polite"></div>
+            <p class="empty-message">Arraste ou escolha uma atividade.</p>
+          </section>
+
+          <section class="drop-zone drop-zone--avoid" data-category="higiene" data-zone="avoid" aria-labelledby="higiene-nao-quero-titulo">
+            <div class="zone-heading">
+              <div>
+                <span class="zone-heading__icon" aria-hidden="true">❌</span>
+                <h3 id="higiene-nao-quero-titulo">Não quero</h3>
+              </div>
+              <button class="assign-button assign-button--avoid" type="button" data-category="higiene" data-zone="avoid">Colocar aqui</button>
+            </div>
+            <div class="zone-list" id="higiene-nao-quero" aria-live="polite"></div>
+            <p class="empty-message">Arraste ou escolha uma atividade.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="escrita" role="tabpanel" aria-labelledby="tab-escrita" hidden>
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Monte sua mensagem</p>
+        <h2>Escrita</h2>
+        <p>Toque nas letras, números e sinais. O texto aparece no quadro ao lado e também pode ser digitado normalmente.</p>
+      </div>
+
+      <div class="writing-layout">
+        <section class="keyboard-panel" aria-labelledby="titulo-teclado">
+          <div class="panel-heading panel-heading--keyboard">
+            <div>
+              <p class="panel-heading__icon" aria-hidden="true">⌨️</p>
+              <h3 id="titulo-teclado">Teclado</h3>
+            </div>
+          </div>
+
+          <div class="keyboard-group">
+            <p class="keyboard-label">Letras</p>
+            <div class="keyboard-grid keyboard-grid--letters" id="teclas-letras"></div>
+          </div>
+
+          <div class="keyboard-group">
+            <p class="keyboard-label">Números</p>
+            <div class="keyboard-grid keyboard-grid--numbers" id="teclas-numeros"></div>
+          </div>
+
+          <div class="keyboard-group">
+            <p class="keyboard-label">Letras com acento</p>
+            <div class="keyboard-grid keyboard-grid--accents" id="teclas-acentos"></div>
+          </div>
+
+          <div class="keyboard-group">
+            <p class="keyboard-label">Sinais</p>
+            <div class="keyboard-grid keyboard-grid--symbols" id="teclas-sinais"></div>
+          </div>
+
+          <div class="keyboard-controls" aria-label="Controles do texto">
+            <button class="control-key control-key--space" type="button" data-text=" "><span aria-hidden="true">␣</span> Espaço</button>
+            <button class="control-key" type="button" data-action="newline"><span aria-hidden="true">↵</span> Nova linha</button>
+            <button class="control-key control-key--delete" type="button" data-action="backspace"><span aria-hidden="true">⌫</span> Apagar</button>
+          </div>
+        </section>
+
+        <section class="message-panel" aria-labelledby="titulo-mensagem">
+          <div class="message-heading">
+            <div>
+              <p class="message-heading__icon" aria-hidden="true">💬</p>
+              <h3 id="titulo-mensagem">Minha mensagem</h3>
+            </div>
+            <span class="character-count" id="contador-caracteres">0 caracteres</span>
+          </div>
+          <label class="sr-only" for="mensagem">Texto da mensagem</label>
+          <textarea id="mensagem" maxlength="1000" rows="10" placeholder="Sua mensagem aparece aqui…" spellcheck="true" aria-describedby="ajuda-mensagem"></textarea>
+          <p id="ajuda-mensagem" class="message-help">Você pode corrigir o texto pelo teclado do aparelho.</p>
+          <div class="message-actions">
+            <button class="message-button message-button--speak" id="falar-mensagem" type="button"><span aria-hidden="true">🔊</span> Falar</button>
+            <button class="message-button" id="copiar-mensagem" type="button"><span aria-hidden="true">📋</span> Copiar</button>
+            <button class="message-button message-button--clear" id="limpar-mensagem" type="button"><span aria-hidden="true">🗑️</span> Limpar</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="status-message" id="status-mensagem" role="status" aria-live="polite"></div>
+
+  <footer class="app-footer">
+    <p>As escolhas e o texto ficam salvos somente neste aparelho até você usar os botões de limpar.</p>
+    <p>Esta ferramenta oferece apoio à comunicação e não substitui orientação profissional individualizada.</p>
+  </footer>
+</body>
+</html>
