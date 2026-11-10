@@ -3,7 +3,7 @@ layout: null
 ---
 (() => {
   const endpoint = {{ site.pageview_tracker_endpoint | default: "" | jsonify }};
-  if (!endpoint) {
+  if (!endpoint || window.location.hostname !== "brunogurgatz.github.io") {
     return;
   }
 
