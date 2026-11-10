@@ -1,4 +1,5 @@
 ---
+layout: null
 ---
 (() => {
   const endpoint = {{ site.pageview_tracker_endpoint | default: "" | jsonify }};
