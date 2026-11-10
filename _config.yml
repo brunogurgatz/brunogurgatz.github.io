@@ -146,13 +146,6 @@ social:
   links: # An array of links to social media profiles
 
 
-# Analytics
-analytics:
-  provider               :  "custom" # Plausible Analytics via _includes/analytics-providers/custom.html
-  google:
-    tracking_id          :
-
-
 # Reading Files
 include:
   - .htaccess
