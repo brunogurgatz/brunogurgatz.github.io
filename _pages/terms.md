@@ -13,18 +13,11 @@ The privacy of my visitors is extremely important. This Privacy Policy outlines 
 
 First and foremost, I will never share your email address or any other personal information to anyone without your direct consent.
 
-### Log Files
+### Visitor statistics
 
-Like many other websites, this site uses log files to help learn about when, from where, and how often traffic flows to this site. The information in these log files include:
+If visitor statistics are enabled, this site records page loads using Google Apps Script and Google Sheets. The spreadsheet stores the page path, the hour in the `America/Sao_Paulo` time zone, and the number of page loads for that page and hour. These are page loads, not unique visitors: reloading or revisiting a page can increase the count.
 
-* Internet Protocol addresses (IP)
-* Types of browser
-* Internet Service Provider (ISP)
-* Date and time stamp
-* Referring and exit pages
-* Number of clicks
-
-All of this information is not linked to anything that is personally identifiable.
+The tracker does not send URL query parameters or fragments and does not set cookies or create a visitor identifier. The Apps Script code does not store IP addresses, browser details, or referrers in the spreadsheet. Google may process technical request data as part of providing Apps Script and Sheets; consult Google's privacy policy for information about its services. Statistics are disabled until the site owner configures the Apps Script Web App URL.
 
 ### Cookies and Web Beacons
 

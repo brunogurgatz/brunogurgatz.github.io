@@ -31,6 +31,10 @@ Abaixo estão as categorias de publicação com seus respectivos títulos:
 
 See more info at https://academicpages.github.io/
 
+## Registro de carregamentos de página
+
+Este site inclui um rastreador opcional com Google Sheets e Apps Script. Ele conta carregamentos por página e hora, não visitantes únicos, e fica desativado até ser configurado. Consulte [`GOOGLE_SHEETS_ANALYTICS.md`](./GOOGLE_SHEETS_ANALYTICS.md) para criar a planilha, implantar o Web App e ativar o endpoint.
+
 ## Running locally
 
 When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:

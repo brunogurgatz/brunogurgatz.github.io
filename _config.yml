@@ -15,6 +15,7 @@ description              : "Pesquisador - Ciências Ambientais"
 url                      : https://brunogurgatz.github.io
 baseurl                  : "" # deixei em branco já que você não mencionou um subcaminho específico
 repository               : "academicpages/academicpages.github.io"
+pageview_tracker_endpoint: "" # URL do Web App do Google Apps Script; veja GOOGLE_SHEETS_ANALYTICS.md
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
